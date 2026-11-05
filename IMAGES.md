@@ -1,0 +1,102 @@
+# Image list
+
+Save each photo in `assets/img/` with exactly this file name. It replaces the placeholder automatically, no rebuild needed. Use JPG or WebP, compressed under about 300 KB.
+
+Folders: `assets/img/before-after/` holds the before/after scans, `assets/img/services/<service>/` holds every photo for that service page (one folder per service), `assets/img/operating-theatre/` the OT photos. Patient photos are grouped in `assets/img/happy-patient/`. Their order, source filenames, dimensions and alt text are in `_build/happy_patients.json`; they appear in the Home and Gallery patient carousels.
+
+| Page | File | Size (px) | What | What to shoot or make |
+|---|---|---|---|---|
+| Home | `assets/img/dr-zico-portrait.png` | 1212x1297 | Dr. Zico portrait (cut-out) | Dr. Md. Isma Azam (Zico), neurosurgeon in Dhaka, in a white coat |
+| Home | `assets/img/ot-team-microscope.jpg` | 1800x1350 | In the operating theatre | Dr. Zico and the surgical team with a microscope and surgical monitor in the operating theatre |
+| Home | `assets/img/team-photo.jpg` | 1536x2048 | Team photo | Dr. Zico with neurosurgery and anaesthesia consultants, specialists and OT nurses |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-01.webp` | 1203x1600 | Patient photo 01 | Dr. Zico seated with a woman patient and her family member at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-02.webp` | 1290x1170 | Patient photo 02 | Dr. Zico with a patient wearing a white prayer cap at the consultation desk |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-03.webp` | 1253x1600 | Patient photo 03 | Dr. Zico standing beside an older patient in a white kurta at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-04.webp` | 1441x1600 | Patient photo 04 | Dr. Zico with a patient wearing a green shirt at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-05.webp` | 1566x1600 | Patient photo 05 | Dr. Zico speaking with an older woman patient seated in a wheelchair |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-06.webp` | 1378x1600 | Patient photo 06 | Patient and family group with Dr. Zico at the consultation room |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-07.webp` | 1600x1439 | Patient photo 07 | Dr. Zico beside a patient wearing a prayer cap and an embroidered shawl |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-08.webp` | 1200x1600 | Patient photo 08 | Dr. Zico with a patient and family member in the consultation room |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-09.webp` | 1200x1600 | Patient photo 09 | Dr. Zico standing with two women at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-10.webp` | 1600x1200 | Patient photo 10 | Dr. Zico with a smiling patient, both wearing maroon shirts |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-11.webp` | 1600x1200 | Patient photo 11 | Dr. Zico at his desk with a patient and family during a consultation |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-12.webp` | 1200x1600 | Patient photo 12 | Dr. Zico with a woman patient and her family member at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-13.webp` | 1284x1600 | Patient photo 13 | Dr. Zico standing between a patient and a family member in the consultation room |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-14.webp` | 769x838 | Patient photo 14 | Dr. Zico seated beside an older patient wearing a white prayer cap |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-15.webp` | 1600x1514 | Patient photo 15 | Dr. Zico at the consultation desk with a woman patient wearing a headscarf |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-16.webp` | 1600x1484 | Patient photo 16 | Dr. Zico seated with an older woman patient wearing a white headscarf |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-17.webp` | 1200x1600 | Patient photo 17 | Dr. Zico standing beside a woman patient seated in a wheelchair |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-18.webp` | 1200x1600 | Patient photo 18 | Dr. Zico standing with a patient and a family member at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-19.webp` | 1600x1016 | Patient photo 19 | Dr. Zico seated beside a young patient wearing a red shirt at the clinic |
+| Gallery | `assets/img/before-after/case-pituitary-before.jpg` | 1200x900 | Before: Pituitary tumour | Head MRI before and after surgery. The tumour at the base of the brain is not seen after the operation. (before) |
+| Gallery | `assets/img/before-after/case-pituitary-after.jpg` | 1200x900 | After: Pituitary tumour | Head MRI before and after surgery. The tumour at the base of the brain is not seen after the operation. (after) |
+| Gallery | `assets/img/before-after/case-cervical-tumor-before.jpg` | 1200x900 | Before: Cervical spine tumour | Neck MRI before and after surgery. A large tumour before the operation and a much smaller one after. (before) |
+| Gallery | `assets/img/before-after/case-cervical-tumor-after.jpg` | 1200x900 | After: Cervical spine tumour | Neck MRI before and after surgery. A large tumour before the operation and a much smaller one after. (after) |
+| Gallery | `assets/img/before-after/case-bypass-before.jpg` | 1200x900 | Before: Brain bypass surgery | Brain blood-vessel scan before and after bypass surgery. (before) |
+| Gallery | `assets/img/before-after/case-bypass-after.jpg` | 1200x900 | After: Brain bypass surgery | Brain blood-vessel scan before and after bypass surgery. (after) |
+| Gallery | `assets/img/before-after/case-large-tumor-before.jpg` | 1200x900 | Before: Large brain tumour | Head scans before and after removal of a large brain tumour (MRI before, CT after). (before) |
+| Gallery | `assets/img/before-after/case-large-tumor-after.jpg` | 1200x900 | After: Large brain tumour | Head scans before and after removal of a large brain tumour (MRI before, CT after). (after) |
+| Gallery | `assets/img/before-after/case-cerebellar-before.jpg` | 1200x900 | Before: Cerebellar tumour | Brain MRI before and after surgery for a tumour at the back of the brain (cerebellum). (before) |
+| Gallery | `assets/img/before-after/case-cerebellar-after.jpg` | 1200x900 | After: Cerebellar tumour | Brain MRI before and after surgery for a tumour at the back of the brain (cerebellum). (after) |
+| Gallery | `assets/img/before-after/case-meningioma-before.jpg` | 1200x900 | Before: Meningioma | MRI before and after removal of a large tumour on the surface of the brain. (before) |
+| Gallery | `assets/img/before-after/case-meningioma-after.jpg` | 1200x900 | After: Meningioma | MRI before and after removal of a large tumour on the surface of the brain. (after) |
+| Gallery | `assets/img/before-after/case-deep-tumor-before.jpg` | 1200x900 | Before: Deep brain tumour | Brain MRI before and after surgery. The deep tumour seen before is not seen after. (before) |
+| Gallery | `assets/img/before-after/case-deep-tumor-after.jpg` | 1200x900 | After: Deep brain tumour | Brain MRI before and after surgery. The deep tumour seen before is not seen after. (after) |
+| Gallery | `assets/img/before-after/case-cpa-before.jpg` | 1200x900 | Before: Cerebellopontine angle tumour | Brain MRI before and after surgery for a tumour at the back of the brain, near the brainstem. (before) |
+| Gallery | `assets/img/before-after/case-cpa-after.jpg` | 1200x900 | After: Cerebellopontine angle tumour | Brain MRI before and after surgery for a tumour at the back of the brain, near the brainstem. (after) |
+| Gallery | `assets/img/before-after/case-skullbase-before.jpg` | 1200x900 | Before: Skull base tumour | MRI before and after surgery for a tumour at the base of the skull. (before) |
+| Gallery | `assets/img/before-after/case-skullbase-after.jpg` | 1200x900 | After: Skull base tumour | MRI before and after surgery for a tumour at the base of the skull. (after) |
+| Home | `assets/img/video-1-thumb.jpg` | 1280x720 | Video 1 thumbnail | Optional: your own thumbnail. If missing, the YouTube thumbnail is used |
+| Home | `assets/img/video-2-thumb.jpg` | 1280x720 | Video 2 thumbnail | Optional: your own thumbnail. If missing, the YouTube thumbnail is used |
+| Home | `assets/img/video-3-thumb.jpg` | 1280x720 | Video 3 thumbnail | Optional: your own thumbnail. If missing, the YouTube thumbnail is used |
+| Home | `assets/img/video-4-thumb.jpg` | 1280x720 | Video 4 thumbnail | Optional: your own thumbnail. If missing, the YouTube thumbnail is used |
+| Home | `assets/img/chamber-continental.jpg` | 1200x675 | Continental Hospital building | Continental Hospital, Gulshan 2, Dhaka |
+| Home | `assets/img/chamber-popular-dhanmondi.jpg` | 1200x675 | Popular Diagnostic, Dhanmondi | Popular Diagnostic Centre building in Dhanmondi, Dhaka |
+| Home | `assets/img/chamber-malibag.jpg` | 1200x675 | Dr. Sirajul Islam MCH, Malibag | Dr. Sirajul Islam Medical College and Hospital building in Malibag, Dhaka |
+| Blog | `assets/img/blog-komor-byatha-cover.jpg` | 1600x900 | Blog cover | Illustration: person holding lower back, spine highlighted (Canva) |
+| About | `assets/img/dr-zico-about.jpg` | 1200x1500 | Dr. Zico portrait (About) | Second portrait: at the desk, in scrubs, or with the microscope |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-minimally-invasive-surgical-access.webp` | 1467x1077 | Minimally invasive surgical access | Surgical access ports in a prepared operating field |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-operating-microscope.webp` | 1600x1600 | Operating microscope | Operating microscope and equipment set up in the operating theatre |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-microscope-close-up.webp` | 1287x1287 | Microscope close-up | Close-up of the operating microscope optics and controls |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-patient-positioning.webp` | 1600x1200 | Patient positioning | Patient positioning and anaesthesia equipment in the operating theatre |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-neurosurgery-team.webp` | 659x704 | Neurosurgery team | Dr. Zico and the surgical team beside operating equipment |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-microscope-assisted-surgery.webp` | 1600x1200 | Microscope-assisted surgery | Dr. Zico and the team using the operating microscope during surgery |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-operating-theatre-team.webp` | 1280x963 | Inside the operating theatre | The surgical team and equipment during an operation |
+| About / Gallery | `assets/img/operating-theatre/dr-zico-endoscopic-surgery-monitor.webp` | 1600x858 | Endoscopic surgery setup | Surgeons working with endoscopic equipment and a surgical monitor |
+| PLID / Lumbar Disc Surgery | `assets/img/services/plid-lumbar-disc-surgery/plid-lumbar-disc-surgery-hero.jpg` | 1600x1000 | PLID / Lumbar Disc Surgery: main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| PLID / Lumbar Disc Surgery | `assets/img/services/plid-lumbar-disc-surgery/plid-lumbar-disc-surgery-what-is-plid.jpg` | 1200x900 | Illustration: What is PLID? | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Spine Surgery | `assets/img/services/spine-surgery/spine-surgery-hero.jpg` | 1200x750 | Spine Surgery: main image | Neck X-ray after cervical spine surgery by Dr. Zico, showing the plate and screws |
+| Spine Surgery | `assets/img/services/spine-surgery/spine-surgery-cervical.jpg` | 1200x900 | Real photo: Neck disc, cervical spondylosis and myelopathy | Neck X-ray after cervical disc surgery by Dr. Zico, showing the plate, screws and spacers |
+| Spine Surgery | `assets/img/services/spine-surgery/spine-surgery-spine-trauma.jpg` | 1200x900 | Real photo: Spine fracture, spinal cord injury and the craniovertebral junction | Neck X-ray after AAD surgery by Dr. Zico, showing the screws at the top of the neck |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-hero.jpg` | 1600x1000 | Brain Tumor Surgery: main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-pituitary.jpg` | 1200x900 | Illustration: Pituitary and sellar tumors | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-meningioma.jpg` | 1200x900 | Illustration: Meningioma, in every location | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-glioma.jpg` | 1200x900 | Illustration: Glioma, including brainstem and optic pathway glioma | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-cp-angle.jpg` | 1200x900 | Illustration: CP angle tumor and acoustic neuroma | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-skull-base.jpg` | 1200x900 | Illustration: Skull base and orbit | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-children-posterior-fossa.jpg` | 1200x900 | Illustration: Children's brain tumors and posterior fossa tumors | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-ventricular-cavernoma.jpg` | 1200x900 | Illustration: Intraventricular tumors, colloid cyst and cavernoma | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Tumor Surgery | `assets/img/services/brain-tumor-surgery/brain-tumor-surgery-metastasis.jpg` | 1200x900 | Illustration: Brain and skull metastasis | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Hydrocephalus and Chiari | `assets/img/services/hydrocephalus-chiari/hydrocephalus-chiari-hero.jpg` | 1600x1000 | Hydrocephalus and Chiari: main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| Hydrocephalus and Chiari | `assets/img/services/hydrocephalus-chiari/hydrocephalus-chiari-hydrocephalus.jpg` | 1200x900 | Illustration: Hydrocephalus | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Hydrocephalus and Chiari | `assets/img/services/hydrocephalus-chiari/hydrocephalus-chiari-chiari.jpg` | 1200x900 | Illustration: Chiari malformation | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Aneurysm and Stroke Surgery | `assets/img/services/brain-aneurysm-stroke-surgery/brain-aneurysm-stroke-surgery-hero.jpg` | 1600x1000 | Brain Aneurysm and Stroke Surgery: main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| Brain Aneurysm and Stroke Surgery | `assets/img/services/brain-aneurysm-stroke-surgery/brain-aneurysm-stroke-surgery-aneurysm.jpg` | 1200x900 | Illustration: Brain aneurysm clipping | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Aneurysm and Stroke Surgery | `assets/img/services/brain-aneurysm-stroke-surgery/brain-aneurysm-stroke-surgery-avm.jpg` | 1200x900 | Illustration: AVM | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Aneurysm and Stroke Surgery | `assets/img/services/brain-aneurysm-stroke-surgery/brain-aneurysm-stroke-surgery-bypass.jpg` | 1200x900 | Illustration: Brain bypass | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Brain Aneurysm and Stroke Surgery | `assets/img/services/brain-aneurysm-stroke-surgery/brain-aneurysm-stroke-surgery-carotid.jpg` | 1200x900 | Illustration: Carotid endarterectomy | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Spinal Tumor Surgery | `assets/img/services/spinal-tumor-surgery/spinal-tumor-surgery-hero.jpg` | 1600x1000 | Spinal Tumor Surgery: main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| Spinal Tumor Surgery | `assets/img/services/spinal-tumor-surgery/spinal-tumor-surgery-spinal-cord-tumors.jpg` | 1200x900 | Illustration: Spinal cord tumors | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Spinal Tumor Surgery | `assets/img/services/spinal-tumor-surgery/spinal-tumor-surgery-bone-tumors.jpg` | 1200x900 | Illustration: Sacral chordoma and bone tumors of the spine | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Spinal Tumor Surgery | `assets/img/services/spinal-tumor-surgery/spinal-tumor-surgery-spine-metastasis.jpg` | 1200x900 | Illustration: Spinal metastasis and myeloma | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Spinal TB (Pott's Disease) | `assets/img/services/spinal-tb-potts-disease/spinal-tb-potts-disease-hero.jpg` | 1600x1000 | Spinal TB (Pott's Disease): main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| Spinal TB (Pott's Disease) | `assets/img/services/spinal-tb-potts-disease/spinal-tb-potts-disease-potts.jpg` | 1200x900 | Illustration: Pott's disease | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Spinal TB (Pott's Disease) | `assets/img/services/spinal-tb-potts-disease/spinal-tb-potts-disease-epidural-abscess.jpg` | 1200x900 | Illustration: Spinal epidural abscess | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Head Injury and Cranioplasty | `assets/img/services/head-injury-cranioplasty/head-injury-cranioplasty-hero.jpg` | 1600x1000 | Head Injury and Cranioplasty: main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| Head Injury and Cranioplasty | `assets/img/services/head-injury-cranioplasty/head-injury-cranioplasty-head-injury.jpg` | 1200x900 | Illustration: Head injury and blood clots | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Head Injury and Cranioplasty | `assets/img/services/head-injury-cranioplasty/head-injury-cranioplasty-cranioplasty.jpg` | 1200x900 | Illustration: Cranioplasty | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| Trigeminal Neuralgia (MVD) | `assets/img/services/trigeminal-neuralgia-mvd/trigeminal-neuralgia-mvd-hero.jpg` | 1600x1000 | Trigeminal Neuralgia (MVD): main image | OT photo of this operation (no patient face) or a clean medical illustration made in Canva |
+| Trigeminal Neuralgia (MVD) | `assets/img/services/trigeminal-neuralgia-mvd/trigeminal-neuralgia-mvd-trigeminal-neuralgia.jpg` | 1200x900 | Illustration: Trigeminal neuralgia and microvascular decompression | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
+| All pages (social share) | `assets/img/og-image.jpg` | 1200x630 | Social share image | Shown when the site is shared on Facebook/WhatsApp: portrait + name + Neurosurgeon |
+
+Total: 92 images.
