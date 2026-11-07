@@ -46,6 +46,18 @@ Folders: `assets/img/before-after/` holds the before/after scans, `assets/img/se
 | Gallery | `assets/img/before-after/case-cpa-after.jpg` | 1200x900 | After: Cerebellopontine angle tumour | Brain MRI before and after surgery for a tumour at the back of the brain, near the brainstem. (after) |
 | Gallery | `assets/img/before-after/case-skullbase-before.jpg` | 1200x900 | Before: Skull base tumour | MRI before and after surgery for a tumour at the base of the skull. (before) |
 | Gallery | `assets/img/before-after/case-skullbase-after.jpg` | 1200x900 | After: Skull base tumour | MRI before and after surgery for a tumour at the base of the skull. (after) |
+| Gallery | `assets/img/before-after/case-cpa-axial-before.jpg` | 1200x900 | Before: CP angle tumour (axial view) | Contrast MRI of the head before and after surgery. The large tumour at the cerebellopontine angle, beside the brainstem, is not seen after the operation. (before) |
+| Gallery | `assets/img/before-after/case-cpa-axial-after.jpg` | 1200x900 | After: CP angle tumour (axial view) | Contrast MRI of the head before and after surgery. The large tumour at the cerebellopontine angle, beside the brainstem, is not seen after the operation. (after) |
+| Gallery | `assets/img/before-after/case-cpa-hydro-before.jpg` | 1200x900 | Before: CP angle tumour with hydrocephalus | Front-view MRI before and after surgery. Before: a CP angle tumour with enlarged fluid spaces in the brain. After: the tumour is removed and the fluid spaces are smaller. (before) |
+| Gallery | `assets/img/before-after/case-cpa-hydro-after.jpg` | 1200x900 | After: CP angle tumour with hydrocephalus | Front-view MRI before and after surgery. Before: a CP angle tumour with enlarged fluid spaces in the brain. After: the tumour is removed and the fluid spaces are smaller. (after) |
+| Gallery | `assets/img/before-after/case-suprasellar-before.jpg` | 1200x900 | Before: Large sellar and suprasellar tumour | A large tumour in and above the pituitary area. MRI before surgery and CT scan after surgery. (before) |
+| Gallery | `assets/img/before-after/case-suprasellar-after.jpg` | 1200x900 | After: Large sellar and suprasellar tumour | A large tumour in and above the pituitary area. MRI before surgery and CT scan after surgery. (after) |
+| Gallery | `assets/img/before-after/case-pituitary-sag-before.jpg` | 1200x900 | Before: Pituitary macroadenoma (side view) | Pituitary MRI (side view) before and after surgery. The tumour is not seen after the operation. (before) |
+| Gallery | `assets/img/before-after/case-pituitary-sag-after.jpg` | 1200x900 | After: Pituitary macroadenoma (side view) | Pituitary MRI (side view) before and after surgery. The tumour is not seen after the operation. (after) |
+| Gallery | `assets/img/before-after/case-pituitary-cor-before.jpg` | 1200x900 | Before: Pituitary macroadenoma (front view) | Pituitary MRI (front view) before and after surgery. The tumour between the two main arteries of the brain is not seen after the operation. (before) |
+| Gallery | `assets/img/before-after/case-pituitary-cor-after.jpg` | 1200x900 | After: Pituitary macroadenoma (front view) | Pituitary MRI (front view) before and after surgery. The tumour between the two main arteries of the brain is not seen after the operation. (after) |
+| Gallery | `assets/img/before-after/case-spine-fracture-before.jpg` | 1200x900 | Before: Spine fracture fixation | Fracture where the upper and lower back meet. CT scan before surgery, and X-ray after the spine was fixed with screws and rods. (before) |
+| Gallery | `assets/img/before-after/case-spine-fracture-after.jpg` | 1200x900 | After: Spine fracture fixation | Fracture where the upper and lower back meet. CT scan before surgery, and X-ray after the spine was fixed with screws and rods. (after) |
 | Home | `assets/img/video-1-thumb.jpg` | 1280x720 | Video 1 thumbnail | Optional: your own thumbnail. If missing, the YouTube thumbnail is used |
 | Home | `assets/img/video-2-thumb.jpg` | 1280x720 | Video 2 thumbnail | Optional: your own thumbnail. If missing, the YouTube thumbnail is used |
 | Home | `assets/img/video-3-thumb.jpg` | 1280x720 | Video 3 thumbnail | Optional: your own thumbnail. If missing, the YouTube thumbnail is used |
@@ -99,4 +111,4 @@ Folders: `assets/img/before-after/` holds the before/after scans, `assets/img/se
 | Trigeminal Neuralgia (MVD) | `assets/img/services/trigeminal-neuralgia-mvd/trigeminal-neuralgia-mvd-trigeminal-neuralgia.jpg` | 1200x900 | Illustration: Trigeminal neuralgia and microvascular decompression | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
 | All pages (social share) | `assets/img/og-image.jpg` | 1200x630 | Social share image | Shown when the site is shared on Facebook/WhatsApp: portrait + name + Neurosurgeon |
 
-Total: 92 images.
+Total: 104 images.

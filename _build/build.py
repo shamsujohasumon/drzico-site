@@ -389,6 +389,12 @@ CASES = [
     ("deep-tumor", "brain", "Deep brain tumour", "মস্তিষ্কের গভীরের টিউমার", "brain-tumor-surgery.html", "Brain MRI before and after surgery. The deep tumour seen before is not seen after."),
     ("cpa", "brain", "Cerebellopontine angle tumour", "সিপি অ্যাঙ্গেল টিউমার", "brain-tumor-surgery.html#cp-angle", "Brain MRI before and after surgery for a tumour at the back of the brain, near the brainstem."),
     ("skullbase", "brain", "Skull base tumour", "খুলির তলদেশের টিউমার", "brain-tumor-surgery.html#skull-base", "MRI before and after surgery for a tumour at the base of the skull."),
+    ("cpa-axial", "brain", "CP angle tumour (axial view)", "সিপি অ্যাঙ্গেল টিউমার", "brain-tumor-surgery.html#cp-angle", "Contrast MRI of the head before and after surgery. The large tumour at the cerebellopontine angle, beside the brainstem, is not seen after the operation."),
+    ("cpa-hydro", "brain", "CP angle tumour with hydrocephalus", "সিপি অ্যাঙ্গেল টিউমার ও মাথায় পানি জমা", "brain-tumor-surgery.html#cp-angle", "Front-view MRI before and after surgery. Before: a CP angle tumour with enlarged fluid spaces in the brain. After: the tumour is removed and the fluid spaces are smaller."),
+    ("suprasellar", "brain", "Large sellar and suprasellar tumour", "পিটুইটারি এলাকার বড় টিউমার", "brain-tumor-surgery.html#pituitary", "A large tumour in and above the pituitary area. MRI before surgery and CT scan after surgery."),
+    ("pituitary-sag", "brain", "Pituitary macroadenoma (side view)", "পিটুইটারি ম্যাক্রোঅ্যাডেনোমা", "brain-tumor-surgery.html#pituitary", "Pituitary MRI (side view) before and after surgery. The tumour is not seen after the operation."),
+    ("pituitary-cor", "brain", "Pituitary macroadenoma (front view)", "পিটুইটারি ম্যাক্রোঅ্যাডেনোমা", "brain-tumor-surgery.html#pituitary", "Pituitary MRI (front view) before and after surgery. The tumour between the two main arteries of the brain is not seen after the operation."),
+    ("spine-fracture", "spine", "Spine fracture fixation", "মেরুদণ্ডের হাড় ভাঙার অপারেশন", "spine-surgery.html#spine-trauma", "Fracture where the upper and lower back meet. CT scan before surgery, and X-ray after the spine was fixed with screws and rods."),
 ]
 CAT_LABEL = {"spine": "Spine", "brain": "Brain", "children": "Children"}
 
