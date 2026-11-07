@@ -13,7 +13,7 @@ from content_services import SERVICES
 from images import img_attrs, largest, make_og_image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE_URL = "https://drzico.example"   # TODO: replace with the real domain before launch
+SITE_URL = "https://neurosurgeonzico-ismaazam.com"
 VERSION = "v1"
 
 DOC = dict(
@@ -131,9 +131,13 @@ def ph(file, w, h, label, desc, alt, page, cls="", caption="", sizes=SZ_HALF):
     cap = f"<figcaption>{caption}</figcaption>" if caption else ""
     smp = sample_for(file, w)
     kind = "real" if file.rsplit("/", 1)[-1] in REAL_REMOTE else "sample"
-    return (f'<figure class="ph {cls}" style="aspect-ratio:{w}/{h}"><div class="ph-inner" aria-hidden="true">{icon("image")}'
+    missing_sample = kind != "real" and not os.path.isfile(os.path.join(ROOT, "assets", "img", file))
+    return (f'<figure class="ph {cls}{" is-sample" if missing_sample else ""}" style="aspect-ratio:{w}/{h}"><div class="ph-inner" aria-hidden="true">{icon("image")}'
             f'<strong>{label}</strong><span class="ph-file">assets/img/{file}</span><span class="ph-desc">{w} x {h} px · {desc}</span></div>'
-            f'<img {img_attrs(file, sizes)} data-sample="{esc(smp)}" data-kind="{kind}" alt="{esc(alt)}" width="{w}" height="{h}" loading="lazy" decoding="async" onerror="dzImg(this)">{cap}</figure>')
+            + (f'<img {img_attrs(file, sizes)} data-sample="{esc(smp)}" data-kind="{kind}" alt="{esc(alt)}" width="{w}" height="{h}" loading="lazy" decoding="async" onerror="dzImg(this)">'
+               if os.path.isfile(os.path.join(ROOT, "assets", "img", file)) else
+               f'<img src="{esc(smp)}" data-tried="1" data-kind="{kind}" alt="{esc(alt)}" width="{w}" height="{h}" loading="lazy" decoding="async" onerror="dzImg(this)">')
+            + f'{cap}</figure>')
 
 def local_photo(file, w, h, label, alt, page, cls="", frame="ph is-real", sizes=SZ_HALF, eager=False):
     """A supplied local photo, without a remote sample fallback."""
@@ -214,9 +218,11 @@ def head(title, desc, file, schema):
 <meta property="og:image:alt" content="{esc(og_alt)}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="preload" href="assets/fonts/spectral-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/public-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/public-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>/* fonts are served from this site (assets/fonts), no Google Fonts request */@font-face{{font-family:"Spectral";font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/spectral-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}@font-face{{font-family:"Spectral";font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/spectral-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}@font-face{{font-family:"Spectral";font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/spectral-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}@font-face{{font-family:"Public Sans";font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/public-sans-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}@font-face{{font-family:"Public Sans";font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/public-sans-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}@font-face{{font-family:"Public Sans";font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/public-sans-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}@font-face{{font-family:"Public Sans";font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/public-sans-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}@font-face{{font-family:"Hind Siliguri";font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/hind-siliguri-bengali-400-normal.woff2) format("woff2");unicode-range:U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1}}@font-face{{font-family:"Hind Siliguri";font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/hind-siliguri-bengali-500-normal.woff2) format("woff2");unicode-range:U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1}}@font-face{{font-family:"Hind Siliguri";font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/hind-siliguri-bengali-600-normal.woff2) format("woff2");unicode-range:U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1}}@font-face{{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}}</style>
 <link rel="stylesheet" href="assets/css/style.css">
 <script>/* image fallback: real file -> sample photo -> labelled placeholder */function dzImg(i){{if(i.dataset.sample&&!i.dataset.tried){{i.dataset.tried="1";if(i.dataset.kind!=="real")i.parentNode.classList.add("is-sample");i.src=i.dataset.sample;}}else{{i.parentNode.classList.remove("is-sample");i.remove();}}}}</script>
 {''.join(ld(s) for s in schema)}
@@ -277,7 +283,7 @@ def contact_widget():
         f'<div class="contact-actions"><a class="btn btn-primary" href="tel:{phone}">{icon("phone")} {esc(display)}</a>'
         f'<a class="btn btn-ghost" href="appointment.html?chamber={key}#book">{icon("calendar")} Appointment</a></div></div></article>'
         for key, name, image, phone, display, note in hospitals)
-    return f"""<button class="floating-call" type="button" data-contact-open aria-haspopup="dialog" aria-controls="contact-modal" aria-label="Call a hospital or book an appointment">{icon('phone')}<span>Call / Book</span></button>
+    return f"""<button class="floating-call" type="button" data-contact-open aria-haspopup="dialog" aria-controls="contact-modal" aria-label="Call / Book: call a hospital or book an appointment">{icon('phone')}<span>Call / Book</span></button>
 <dialog class="contact-modal" id="contact-modal" aria-labelledby="contact-title" aria-describedby="contact-intro">
  <div class="contact-heading"><div><span class="eyebrow">Appointments</span><h2 id="contact-title">Call or book a visit</h2></div><button class="icon-btn" type="button" data-contact-close aria-label="Close appointment options" autofocus>{icon('close')}</button></div>
  <p class="muted" id="contact-intro">Choose your hospital to call or request an appointment.</p>
@@ -338,15 +344,15 @@ def svc_card(s):
 
 def chamber_cards(page):
     return f"""<div class="grid-3c">
-<article class="chamber">{local_photo('chamber-continental.jpg', 1200, 675, 'Continental Hospital building', 'Continental Hospital, Gulshan 2, Dhaka', page, 'ph--sm')}<span class="status" data-chamber-status="continental">Sat to Thu</span><h3>Continental Hospital, Gulshan 2</h3>
+<article class="chamber">{local_photo('chamber-continental.jpg', 1200, 675, 'Continental Hospital building', 'Continental Hospital, Gulshan 2, Dhaka', page, 'ph--sm', eager=(page == 'Appointment'))}<span class="status" data-chamber-status="continental">Sat to Thu</span><h3>Continental Hospital, Gulshan 2</h3>
 <dl><dt>Address</dt><dd>Plot 15, Road 71, Gulshan 2, Dhaka 1212</dd><dt>Days</dt><dd>Saturday to Thursday</dd><dt>Time</dt><dd>8:30 AM to 4:00 PM</dd><dt>Role</dt><dd>Associate Consultant, Neuro Surgery</dd></dl>
 <div><span class="small muted">Hospital hotline</span><br><a class="phone" href="tel:{DOC['continental_hotline']}">{DOC['continental_hotline']}</a></div>
 <div class="btn-row"><a class="btn btn-brand" href="appointment.html?chamber=continental#book">{icon('calendar')} Request appointment</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Continental+Hospital+Gulshan+2+Dhaka" target="_blank" rel="noopener">{icon('pin')} Map</a></div></article>
-<article class="chamber">{local_photo('chamber-popular-dhanmondi.jpg', 1200, 675, 'Popular Diagnostic, Dhanmondi', 'Popular Diagnostic Centre building in Dhanmondi, Dhaka', page, 'ph--sm')}<span class="status" data-chamber-status="popular">Sat, Mon, Wed</span><h3>Popular Diagnostic Centre, Dhanmondi</h3>
+<article class="chamber">{local_photo('chamber-popular-dhanmondi.jpg', 1200, 675, 'Popular Diagnostic, Dhanmondi', 'Popular Diagnostic Centre building in Dhanmondi, Dhaka', page, 'ph--sm', eager=(page == 'Appointment'))}<span class="status" data-chamber-status="popular">Sat, Mon, Wed</span><h3>Popular Diagnostic Centre, Dhanmondi</h3>
 <dl><dt>Address</dt><dd>House 16, Road 2, Dhanmondi R/A, Dhaka 1205</dd><dt>Days</dt><dd>Saturday, Monday, Wednesday</dd><dt>Time</dt><dd>10:00 PM to 12:00 AM</dd></dl>
 <div><span class="small muted">Serial (appointment)</span><br><a class="phone" href="tel:{DOC['phone_popular_intl']}">{DOC['phone_popular']}</a></div>
 <div class="btn-row"><a class="btn btn-brand" href="appointment.html?chamber=popular#book">{icon('calendar')} Request serial</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Popular+Diagnostic+Centre+Dhanmondi+Dhaka" target="_blank" rel="noopener">{icon('pin')} Map</a></div></article>
-<article class="chamber">{local_photo('chamber-malibag.jpg', 1200, 675, 'Dr. Sirajul Islam MCH, Malibag', 'Dr. Sirajul Islam Medical College and Hospital building in Malibag, Dhaka', page, 'ph--sm')}<span class="status" data-chamber-status="malibag">Call to confirm hours</span><h3>Dr. Sirajul Islam Medical College &amp; Hospital, Malibag</h3>
+<article class="chamber">{local_photo('chamber-malibag.jpg', 1200, 675, 'Dr. Sirajul Islam MCH, Malibag', 'Dr. Sirajul Islam Medical College and Hospital building in Malibag, Dhaka', page, 'ph--sm', eager=(page == 'Appointment'))}<span class="status" data-chamber-status="malibag">Call to confirm hours</span><h3>Dr. Sirajul Islam Medical College &amp; Hospital, Malibag</h3>
 <dl><dt>Address</dt><dd>12/3 New Circular Road, Malibag (near Mouchak Market), Dhaka</dd><dt>Days</dt><dd>{v('Call to confirm', 'Published schedules differ: daily except Friday 8 to 10 PM, or Sat to Thu 6 to 8 PM.')}</dd></dl>
 <div><span class="small muted">Appointment</span><br><a class="phone" href="tel:+8801927333000">{DOC['phone_malibag']}</a> · <a class="phone" href="tel:+8801830279952">{DOC['phone_malibag2']}</a></div>
 <div class="btn-row"><a class="btn btn-brand" href="appointment.html?chamber=malibag#book">{icon('calendar')} Request serial</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Dr.+Sirajul+Islam+Medical+College+Hospital+Malibag" target="_blank" rel="noopener">{icon('pin')} Map</a></div></article>
@@ -836,7 +842,7 @@ def page_appointment():
  <span class="eyebrow">Chambers and appointment</span><h1 style="margin-top:12px">Book an Appointment with Dr. Zico<span class="bn-line" lang="bn">সিরিয়াল ও চেম্বারের তথ্য</span></h1>
  <p class="lead" style="margin-top:18px">Dr. Zico sees patients at three places in Dhaka. The quickest way to book is to call his personal assistant on <a href="tel:{DOC['pa_intl']}">{DOC['pa']}</a> or the chamber directly. You can also send a request below.</p>
 </div></section>
-<section class="section" id="chambers"><div class="wrap">{chamber_cards('Appointment')}</div></section>
+<section class="section" id="chambers"><div class="wrap"><h2 class="vh">Dr. Zico's chambers</h2>{chamber_cards('Appointment')}</div></section>
 <section class="section section--tint" id="book"><div class="wrap split" data-wa="{DOC['pa_intl'].lstrip('+')}">
  <div>
   <form class="bk" id="booking-form" novalidate>
@@ -1059,6 +1065,7 @@ RewriteRule ^[^/]+\.md$ - [F,L]
   ExpiresByType image/jpeg "access plus 7 days"
   ExpiresByType image/png "access plus 7 days"
   ExpiresByType image/svg+xml "access plus 7 days"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml application/xml

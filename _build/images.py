@@ -8,7 +8,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IMG = os.path.join(ROOT, "assets", "img")
 OPT = "_opt"
-WIDTHS = (480, 960, 1600)
+WIDTHS = (240, 480, 720, 960, 1600)  # 240 for the logo, 720 for half-width photos
 QUALITY = 78
 
 try:

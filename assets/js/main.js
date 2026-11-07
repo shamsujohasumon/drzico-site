@@ -494,6 +494,8 @@
         show(Math.round(target * eased));
         if (p < 1) requestAnimationFrame(step); else show(target);
       };
+      // keep the final width while counting so nothing around the number moves
+      el.style.display = "inline-block"; el.style.minWidth = el.getBoundingClientRect().width + "px"; el.style.textAlign = "right";
       show(0); requestAnimationFrame(step);
     };
     var cio = new IntersectionObserver(function (entries) {
