@@ -281,32 +281,6 @@
     if (r) r.addEventListener("input", function () { ba.style.setProperty("--pos", r.value + "%"); });
   });
 
-  /* ---------- before / after: open both images large, side by side ---------- */
-  var baCards = $$("[data-ba-view]");
-  if (baCards.length) {
-    var bv = document.createElement("dialog");
-    bv.className = "ba-viewer"; bv.setAttribute("aria-label", "Before and after");
-    bv.innerHTML = '<div class="bav-box"><button class="icon-btn bav-close" type="button" aria-label="Close">&#x2715;</button>' +
-      '<h2 class="bav-title"></h2><div class="bav-pair"><figure><figcaption class="bav-b">Before surgery</figcaption><img alt=""></figure>' +
-      '<figure><figcaption class="bav-a">After surgery</figcaption><img alt=""></figure></div><p class="bav-note"></p></div>';
-    document.body.appendChild(bv);
-    var bimgs = $$("img", bv);
-    var closeBv = function () { if (bv.open) bv.close(); };
-    $(".bav-close", bv).addEventListener("click", closeBv);
-    bv.addEventListener("click", function (e) { if (e.target === bv) closeBv(); });
-    baCards.forEach(function (card) {
-      var open = function () {
-        var src = $$("img", card);
-        if (src.length < 2 || typeof bv.showModal !== "function") return;
-        src.forEach(function (im, i) { bimgs[i].src = im.dataset.full || im.currentSrc || im.src; bimgs[i].alt = im.alt; });
-        $(".bav-title", bv).textContent = card.getAttribute("data-title");
-        $(".bav-note", bv).textContent = card.getAttribute("data-note");
-        bv.showModal();
-      };
-      card.addEventListener("click", open);
-    });
-  }
-
   /* ---------- carousel ---------- */
   $$("[data-carousel]").forEach(function (c) {
     var track = $(".car-track", c);
@@ -373,14 +347,49 @@
     lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
   }
 
+  /* ---------- latest YouTube videos (newest first), replaces the built-in list ---------- */
+  $$("[data-yt-key]").forEach(function (box) {
+    var key = box.getAttribute("data-yt-key"), list = box.getAttribute("data-yt-list"), max = box.getAttribute("data-yt-max") || 20;
+    if (!key || !window.fetch) return; // no key: keep the list that is already on the page
+    var track = $(".car-track", box);
+    var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=" + max +
+      "&playlistId=" + encodeURIComponent(list) + "&key=" + encodeURIComponent(key);
+    fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
+      var items = (d.items || []).filter(function (it) { return it.snippet && it.snippet.resourceId && it.snippet.title !== "Private video" && it.snippet.title !== "Deleted video"; });
+      if (!items.length) return;
+      track.innerHTML = "";
+      items.forEach(function (it) {
+        var sn = it.snippet, id = sn.resourceId.videoId, th = sn.thumbnails || {};
+        var img = (th.high || th.medium || th.default || {}).url || ("https://i.ytimg.com/vi/" + id + "/hqdefault.jpg");
+        var a = document.createElement("a");
+        a.className = "video-card"; a.href = "https://www.youtube.com/watch?v=" + id; a.target = "_blank"; a.rel = "noopener";
+        a.setAttribute("data-video", id); a.setAttribute("data-title", sn.title);
+        var thumb = document.createElement("div"); thumb.className = "vc-thumb";
+        var fig = document.createElement("figure"); fig.className = "ph ph--sm is-real"; fig.style.aspectRatio = "16/9";
+        var im = document.createElement("img"); im.src = img; im.alt = "Video: " + sn.title; im.loading = "lazy"; im.decoding = "async";
+        fig.appendChild(im); thumb.appendChild(fig);
+        var play = document.createElement("span"); play.className = "play"; play.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5L8 5.5Z" fill="currentColor"/></svg>';
+        thumb.appendChild(play); a.appendChild(thumb);
+        var t = document.createElement("strong"); t.textContent = sn.title; if (/[\u0980-\u09FF]/.test(sn.title)) t.lang = "bn"; a.appendChild(t);
+        var meta = document.createElement("span"); meta.className = "small muted";
+        var dt = new Date(sn.publishedAt); meta.textContent = (isNaN(dt) ? "" : dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) + " · ") + "YouTube";
+        a.appendChild(meta); track.appendChild(a);
+      });
+      track.scrollLeft = 0;
+    }).catch(function () { /* keep the built-in list */ });
+  });
+
   /* ---------- video popup ---------- */
   var vm = $("#video-modal");
   if (vm && typeof vm.showModal === "function") {
     var vmFrame = $(".vm-frame", vm), vmTitle = $(".vm-title", vm);
     var closeVm = function () { if (vm.open) vm.close(); };
     vm.addEventListener("close", function () { vmFrame.innerHTML = ""; }); // stops playback
-    $$("[data-video]").forEach(function (a) {
-      a.addEventListener("click", function (e) {
+    // one listener for all cards, so videos added later from YouTube also open in the popup
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("[data-video]");
+      if (!a) return;
+      (function () {
         e.preventDefault();
         var id = a.getAttribute("data-video"), t = a.getAttribute("data-title") || "Video";
         var f = document.createElement("iframe");
@@ -388,7 +397,7 @@
         f.title = t; f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
         vmFrame.innerHTML = ""; vmFrame.appendChild(f); vmTitle.textContent = t;
         vm.showModal();
-      });
+      })();
     });
     $("[data-vm-close]", vm).addEventListener("click", closeVm);
     vm.addEventListener("click", function (e) { if (e.target === vm) closeVm(); });

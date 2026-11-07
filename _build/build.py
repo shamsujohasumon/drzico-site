@@ -421,6 +421,12 @@ def ba_carousel(cases, page):
 </div>"""
 
 # YouTube videos (checked 28 Sep 2026). To add one: append (video ID, title, source). Order = carousel order.
+# Latest videos, loaded live from the YouTube channel (newest first, up to YT_MAX).
+# Needs a YouTube Data API v3 key restricted to this website (see YOUTUBE-SETUP.md). Empty = the list below is shown.
+YT_API_KEY = "AIzaSyAzTDh62L6w2jbmo4paJA_tfKh3QxSJBgA"
+YT_CHANNEL_ID = "UCeLQ_qqrxTXSDeMszqG8tDA"
+YT_MAX = 20
+# Fallback list, shown when there is no key or YouTube cannot be reached.
 VIDEOS = [
     ("5FYfW_5LRYA", "What is PLID?", "Neurosurgeon Dr. Zico"),
     ("cuQPs4OXC9g", "PLID অপারেশনের পরে প্যারালাইসিস হবে না", "Neurosurgeon Dr. Zico"),
@@ -436,7 +442,8 @@ def video_card(i, vid, title, src, page):
             f'<span class="play">{icon("play")}</span></div><strong{lang}>{esc(title)}</strong><span class="small muted">{esc(src)} · YouTube</span></a>')
 def video_carousel(page):
     cards = "".join(video_card(i, *v_, page) for i, v_ in enumerate(VIDEOS, 1))
-    return f"""<div class="carousel carousel--videos" data-carousel data-autoplay="5000">
+    uploads = "UU" + YT_CHANNEL_ID[2:]  # every channel's "uploads" playlist, newest first
+    return f"""<div class="carousel carousel--videos" data-carousel data-autoplay="5000" data-yt-key="{YT_API_KEY}" data-yt-list="{uploads}" data-yt-max="{YT_MAX}">
  <div class="car-track" tabindex="0" aria-label="Videos, scroll sideways">{cards}</div>
  <div class="car-nav"><button class="icon-btn" type="button" data-car-prev aria-label="Previous video">{icon('arrow', 'flip')}</button><button class="icon-btn" type="button" data-car-next aria-label="Next video">{icon('arrow')}</button></div>
 </div>
