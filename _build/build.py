@@ -217,7 +217,10 @@ def head(title, desc, file, schema):
 <meta property="og:image:height" content="{og_h}">
 <meta property="og:image:alt" content="{esc(og_alt)}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/img/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="assets/fonts/spectral-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/public-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -1050,6 +1053,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
 
+# NOT INDEXED YET: Google is told not to index the site until launch.
+# At launch, delete the 3 lines below (IfModule ... /IfModule), rebuild and push.
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+
 # Hide build tools and notes from visitors
 RewriteRule ^(_build|fb-feed-worker)(/|$) - [F,L]
 RewriteRule ^[^/]+\.md$ - [F,L]
@@ -1066,6 +1075,7 @@ RewriteRule ^[^/]+\.md$ - [F,L]
   ExpiresByType image/png "access plus 7 days"
   ExpiresByType image/svg+xml "access plus 7 days"
   ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 7 days"
 </IfModule>
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml application/xml
