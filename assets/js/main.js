@@ -244,7 +244,7 @@
     $$("[data-contact-open]").forEach(function (button) {
       button.addEventListener("click", function () {
         if (typeof contactModal.showModal !== "function") {
-          window.location.href = "appointment.html";
+          window.location.href = "appointment";
           return;
         }
         if (contactModal.open) return;
@@ -387,139 +387,144 @@
   /* ---------- year ---------- */
   $$("[data-year]").forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 
-  /* ---------- appointment request form ---------- */
+  /* ---------- appointment request: sends the details to the assistant on WhatsApp ---------- */
   var form = $("#booking-form");
   if (form) {
-    var dateInput = $("#b-date", form), chamberSel = $("#b-chamber", form), hint = $("#b-date-hint", form), chips = $("#b-next", form);
-    var now = dhakaNow();
-    dateInput.min = iso(now.y, now.m, now.d);
-    var max = addDays(now.y, now.m, now.d, 60);
-    dateInput.max = iso(max.y, max.m, max.d);
+    var waNumber = (form.closest("[data-wa]") || document.body).getAttribute("data-wa") || "8801716033364";
+    var daysBox = $("#bk-days", form), chosenDay = "";
+    var radios = $$('input[name="chamber"]', form);
+    var chamberKey = function () { var r = $('input[name="chamber"]:checked', form); return r ? r.value : "popular"; };
 
-    // preselect concern from ?concern= in the URL (links from service pages)
+    // preselect from links like appointment?chamber=continental&concern=plid
     try {
-      var qs = new URLSearchParams(window.location.search).get("concern");
-      if (qs) { var opt = $('#b-concern option[value="' + qs + '"]', form); if (opt) opt.selected = true; }
-      var ch = new URLSearchParams(window.location.search).get("chamber");
-      if (ch && CHAMBERS[ch]) chamberSel.value = ch;
+      var q = new URLSearchParams(window.location.search);
+      var ch = q.get("chamber"), cn = q.get("concern");
+      if (ch && CHAMBERS[ch]) radios.forEach(function (r) { r.checked = r.value === ch; });
+      if (cn) { var opt = $('#b-concern option[value="' + cn + '"]', form); if (opt) opt.selected = true; }
     } catch (e) { /* ignore */ }
 
-    function refreshDates() {
-      var key = chamberSel.value;
-      chips.innerHTML = "";
-      if (CHAMBERS[key] && CHAMBERS[key].days) {
-        hint.textContent = "This chamber sits on " + CHAMBERS[key].dayText + ", " + CHAMBERS[key].hours + ".";
-        nextOpenDates(key, 4).forEach(function (t) {
-          var b = document.createElement("button");
-          b.type = "button"; b.textContent = prettyDate(t);
-          b.addEventListener("click", function () { dateInput.value = iso(t.y, t.m, t.d); validate(dateInput); });
-          chips.appendChild(b);
-        });
-      } else if (key === "malibag") {
-        hint.textContent = "Hours at this chamber are confirmed by phone. Pick a preferred date and the team will confirm.";
-      } else {
-        hint.textContent = "Choose a chamber first to see its days.";
+    function dayChip(label, value, selected) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "bk-day"; b.textContent = label;
+      b.setAttribute("role", "radio"); b.setAttribute("aria-checked", selected ? "true" : "false");
+      b.addEventListener("click", function () {
+        $$(".bk-day", daysBox).forEach(function (x) { x.setAttribute("aria-checked", "false"); });
+        b.setAttribute("aria-checked", "true"); chosenDay = value;
+      });
+      return b;
+    }
+    function refreshDays() {
+      daysBox.innerHTML = ""; chosenDay = "";
+      var key = chamberKey();
+      daysBox.appendChild(dayChip("Earliest available", "", true));
+      nextOpenDates(key, 4).forEach(function (t) { daysBox.appendChild(dayChip(prettyDate(t), prettyDate(t), false)); });
+      if (key === "malibag") {
+        var n = document.createElement("span"); n.className = "bk-day-note small muted";
+        n.textContent = "The assistant will tell you the days for this chamber.";
+        daysBox.appendChild(n);
       }
     }
-    chamberSel.addEventListener("change", function () { refreshDates(); if (dateInput.value) validate(dateInput); });
-    refreshDates();
+    radios.forEach(function (r) { r.addEventListener("change", refreshDays); });
+    refreshDays();
 
     var rules = {
-      "b-name": function (v) { return v.trim().length >= 3 ? "" : "Enter the patient's full name (at least 3 letters)."; },
+      "b-name": function (v) { return v.trim().length >= 2 ? "" : "Please write the patient's name."; },
       "b-phone": function (v) {
         var d = v.replace(/[\s-]/g, "").replace(/^\+?88/, "");
-        return /^01[3-9]\d{8}$/.test(d) ? "" : "Enter an 11-digit Bangladeshi mobile number, for example 017XXXXXXXX.";
-      },
-      "b-age": function (v) { return v === "" || (+v >= 0 && +v <= 110) ? "" : "Age must be between 0 and 110."; },
-      "b-chamber": function (v) { return v ? "" : "Choose a chamber."; },
-      "b-date": function (v) {
-        if (!v) return "Choose a preferred date.";
-        if (v < dateInput.min) return "Choose today or a later date.";
-        var cc = CHAMBERS[chamberSel.value];
-        if (cc && cc.days) {
-          var p = v.split("-"), dow = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])).getUTCDay();
-          if (cc.days.indexOf(dow) === -1) return "This chamber is on " + cc.dayText + " only. Pick one of those days.";
-        }
-        return "";
-      },
-      "b-concern": function (v) { return v ? "" : "Choose the main problem, or \"Not sure\"."; },
-      "b-consent": function (v, el) { return el.checked ? "" : "Please tick this box to continue."; }
+        return /^01[3-9]\d{8}$/.test(d) ? "" : "Please write an 11-digit mobile number, like 017XXXXXXXX.";
+      }
     };
     function validate(el) {
-      var fn = rules[el.id]; if (!fn) return true;
-      var msg = fn(el.value, el);
-      var field = el.closest(".field") || el.closest(".check");
+      var msg = rules[el.id](el.value);
       var err = $("#" + el.id + "-err");
-      if (field) field.classList.toggle("has-error", !!msg);
-      if (err) { err.textContent = msg; err.hidden = !msg; }
+      el.closest(".bk-field").classList.toggle("has-error", !!msg);
+      err.textContent = msg; err.hidden = !msg;
       el.setAttribute("aria-invalid", msg ? "true" : "false");
       return !msg;
     }
     Object.keys(rules).forEach(function (id) {
       var el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener(el.type === "checkbox" || el.tagName === "SELECT" ? "change" : "blur", function () { validate(el); });
-      // clear an error as soon as the input becomes valid, so the layout does not jump on the next click
+      el.addEventListener("blur", function () { if (el.value) validate(el); });
       el.addEventListener("input", function () { if (el.getAttribute("aria-invalid") === "true") validate(el); });
     });
 
+    var lastUrl = "";
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var bad = [];
-      Object.keys(rules).forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el && !validate(el)) bad.push(el);
-      });
-      var summary = $("#b-summary");
-      if (bad.length) {
-        summary.hidden = false;
-        summary.innerHTML = "<strong>Please fix " + bad.length + " field" + (bad.length > 1 ? "s" : "") + ":</strong><ul></ul>";
-        var ul = $("ul", summary);
-        bad.forEach(function (el) {
-          var li = document.createElement("li"), a = document.createElement("a");
-          a.href = "#" + el.id; a.textContent = $("#" + el.id + "-err").textContent;
-          li.appendChild(a); ul.appendChild(li);
-        });
-        bad[0].focus();
-        return;
-      }
-      summary.hidden = true;
+      var bad = Object.keys(rules).map(function (id) { return document.getElementById(id); }).filter(function (el) { return !validate(el); });
+      if (bad.length) { bad[0].focus(); return; }
+      var c = CHAMBERS[chamberKey()];
+      var concern = $("#b-concern").value ? $("#b-concern").selectedOptions[0].textContent : "";
+      var lines = [
+        "Assalamu alaikum. I would like a serial for Dr. Md. Isma Azam (Zico).",
+        "",
+        "Patient: " + $("#b-name").value.trim(),
+        "Mobile: " + $("#b-phone").value.trim(),
+        "Chamber: " + c.name,
+        "Preferred day: " + (chosenDay || "Earliest available")
+      ];
+      if (concern) lines.push("Problem: " + concern);
+      var note = $("#b-notes").value.trim();
+      if (note) lines.push("Note: " + note);
+      lines.push("", "(Sent from the website)");
+      lastUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(lines.join("\n"));
+      var w = window.open(lastUrl, "_blank", "noopener");
+      if (!w) window.location.href = lastUrl; // popup blocked: open in this tab
+      var done = $("#booking-success");
+      $("#bk-reopen").href = lastUrl;
+      form.hidden = true; done.hidden = false; done.focus();
+    });
+    $("#b-again").addEventListener("click", function () {
+      $("#booking-success").hidden = true; form.hidden = false; $("#b-name").focus();
+    });
+  }
 
-      var btn = $("button[type=submit]", form);
-      btn.disabled = true; btn.textContent = "Sending...";
-      var data = {
-        name: $("#b-name").value.trim(),
-        phone: $("#b-phone").value.trim(),
-        age: $("#b-age").value,
-        chamber: CHAMBERS[chamberSel.value].name,
-        date: dateInput.value,
-        concern: $("#b-concern").selectedOptions[0].textContent,
-        mri: $("#b-mri").value,
-        notes: $("#b-notes").value.trim()
+  /* ---------- numbers count up from 0 when they come into view ---------- */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var counters = $$(".stat b, .ledger .n, .ledger-total, [data-countup]");
+  if (!reduce && "IntersectionObserver" in window && counters.length) {
+    var run = function (el) {
+      var target = parseInt(el.textContent.replace(/[^\d]/g, ""), 10);
+      if (!target) return;
+      var withComma = /,/.test(el.textContent), t0 = null, dur = 1600;
+      var show = function (n) { el.textContent = withComma ? n.toLocaleString("en-US") : String(n); };
+      var step = function (t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min((t - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+        show(Math.round(target * eased));
+        if (p < 1) requestAnimationFrame(step); else show(target);
       };
-      // TODO(Next.js): POST `data` to /api/appointments and show the result.
-      window.setTimeout(function () {
-        var ok = $("#booking-success");
-        var dl = $("dl", ok); dl.innerHTML = "";
-        [["Patient", data.name], ["Mobile", data.phone], ["Chamber", data.chamber], ["Preferred date", data.date], ["Problem", data.concern], ["MRI / CT", data.mri]].forEach(function (r) {
-          var dt = document.createElement("dt"), dd = document.createElement("dd");
-          dt.textContent = r[0]; dd.textContent = r[1] || "Not given"; dl.appendChild(dt); dl.appendChild(dd);
-        });
-        $("#b-call-number").textContent = CHAMBERS[chamberSel.value].phone;
-        ok._text = "Appointment request\n" + [["Patient", data.name], ["Mobile", data.phone], ["Age", data.age], ["Chamber", data.chamber], ["Preferred date", data.date], ["Problem", data.concern], ["MRI / CT", data.mri], ["Notes", data.notes]].map(function (r) { return r[0] + ": " + (r[1] || "-"); }).join("\n");
-        form.hidden = true; ok.hidden = false; ok.focus();
-        btn.disabled = false; btn.textContent = "Send request";
-      }, 500);
-    });
+      show(0); requestAnimationFrame(step);
+    };
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { cio.unobserve(en.target); run(en.target); } });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { cio.observe(el); });
+  }
 
-    var copyBtn = $("#b-copy"), again = $("#b-again");
-    if (copyBtn) copyBtn.addEventListener("click", function () {
-      var txt = $("#booking-success")._text || "";
-      var done = function () { copyBtn.textContent = "Copied"; setTimeout(function () { copyBtn.textContent = "Copy details"; }, 1800); };
-      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function () { copyBtn.textContent = "Copy blocked"; });
+  /* ---------- gentle reveal of sections and cards while scrolling ---------- */
+  var revealSel = [
+    "main .section-head", "main .block-head", "main .prose", "main .figure-row", "main .cols", "main .bn-box",
+    ".svc-card", ".chamber", ".case-card", ".box", ".fb-card", ".video-card", ".ba-card", ".stat",
+    ".contact-hospital", ".ot-photo-frame", ".faq details", ".notice", ".cta-band",
+    "main .carousel", ".ledger:not(.ledger--float)", ".breakdown", ".timeline li"
+  ].join(",");
+  if (!reduce && "IntersectionObserver" in window) {
+    var items = $$(revealSel).filter(function (el) { return !el.closest(".hero, .page-hero, .site-header, dialog, .drawer, .car-track"); });
+    document.documentElement.classList.add("anim");
+    items.forEach(function (el) {
+      el.classList.add("reveal");
+      var sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      el.style.setProperty("--d", Math.min(sib, 5) * 70 + "ms"); // small stagger inside grids
     });
-    if (again) again.addEventListener("click", function () {
-      form.reset(); refreshDates(); form.hidden = false; $("#booking-success").hidden = true; $("#b-name").focus();
-    });
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target; rio.unobserve(el); el.classList.add("is-in");
+        // once shown, drop the classes so hover effects and normal styles apply again
+        setTimeout(function () { el.classList.remove("reveal", "is-in"); el.style.removeProperty("--d"); }, 1200);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function (el) { rio.observe(el); });
   }
 })();

@@ -304,7 +304,7 @@ def footer():
   <div><h2>Patients</h2><ul><li><a href="appointment.html#book">Book appointment</a></li><li><a href="services.html#finder">Find your condition</a></li><li><a href="gallery.html">Patient gallery</a></li><li><a href="faq.html">Questions and answers</a></li><li><a href="blog.html">Health articles (Bangla)</a></li><li><a href="about.html#case-log">Surgical case log</a></li></ul></div>
  </div>
  <p class="notice" style="margin-top:32px">Information on this website is for general education and does not replace a consultation. Every patient is different; decisions about surgery are made after examination and review of scans. In an emergency, go to the nearest hospital emergency department.</p>
- <div class="footer-base"><span>© <span data-year>2026</span> Dr. Md. Isma Azam (Zico). {v('BMDC Reg. No. A-XXXXX', 'Add his BMDC registration number.')}</span><span>Appointment: <a class="num" href="tel:{DOC['pa_intl']}">{DOC['pa']}</a></span></div>
+ <div class="footer-base"><span>© <span data-year>2026</span> Dr. Md. Isma Azam (Zico).</span><span>Appointment: <a class="num" href="tel:{DOC['pa_intl']}">{DOC['pa']}</a></span></div>
 </div></footer>
 <div class="mobile-cta" aria-label="Quick actions"><button class="btn btn-ghost" type="button" data-contact-open aria-haspopup="dialog" aria-controls="contact-modal">{icon('phone')} Call</button><a class="btn btn-primary" href="appointment.html#book">{icon('calendar')} Book</a></div>
 {contact_widget()}
@@ -339,15 +339,15 @@ def svc_card(s):
 def chamber_cards(page):
     return f"""<div class="grid-3c">
 <article class="chamber">{local_photo('chamber-continental.jpg', 1200, 675, 'Continental Hospital building', 'Continental Hospital, Gulshan 2, Dhaka', page, 'ph--sm')}<span class="status" data-chamber-status="continental">Sat to Thu</span><h3>Continental Hospital, Gulshan 2</h3>
-<dl><dt>Address</dt><dd>Plot 15, Road 71, Gulshan 2, Dhaka 1212</dd><dt>Days</dt><dd>Saturday to Thursday</dd><dt>Time</dt><dd>8:30 AM to 4:00 PM</dd><dt>Role</dt><dd>Associate Consultant, Neuro Surgery</dd><dt>Fee</dt><dd>{v('Ask when you call', 'Add the consultation fee at Continental.')}</dd></dl>
+<dl><dt>Address</dt><dd>Plot 15, Road 71, Gulshan 2, Dhaka 1212</dd><dt>Days</dt><dd>Saturday to Thursday</dd><dt>Time</dt><dd>8:30 AM to 4:00 PM</dd><dt>Role</dt><dd>Associate Consultant, Neuro Surgery</dd></dl>
 <div><span class="small muted">Hospital hotline</span><br><a class="phone" href="tel:{DOC['continental_hotline']}">{DOC['continental_hotline']}</a></div>
 <div class="btn-row"><a class="btn btn-brand" href="appointment.html?chamber=continental#book">{icon('calendar')} Request appointment</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Continental+Hospital+Gulshan+2+Dhaka" target="_blank" rel="noopener">{icon('pin')} Map</a></div></article>
 <article class="chamber">{local_photo('chamber-popular-dhanmondi.jpg', 1200, 675, 'Popular Diagnostic, Dhanmondi', 'Popular Diagnostic Centre building in Dhanmondi, Dhaka', page, 'ph--sm')}<span class="status" data-chamber-status="popular">Sat, Mon, Wed</span><h3>Popular Diagnostic Centre, Dhanmondi</h3>
-<dl><dt>Address</dt><dd>House 16, Road 2, Dhanmondi R/A, Dhaka 1205</dd><dt>Days</dt><dd>Saturday, Monday, Wednesday</dd><dt>Time</dt><dd>10:00 PM to 12:00 AM</dd><dt>Fee</dt><dd>{v('Ask when you call', 'Add the new-patient, follow-up and report-check fees.')}</dd></dl>
+<dl><dt>Address</dt><dd>House 16, Road 2, Dhanmondi R/A, Dhaka 1205</dd><dt>Days</dt><dd>Saturday, Monday, Wednesday</dd><dt>Time</dt><dd>10:00 PM to 12:00 AM</dd></dl>
 <div><span class="small muted">Serial (appointment)</span><br><a class="phone" href="tel:{DOC['phone_popular_intl']}">{DOC['phone_popular']}</a></div>
 <div class="btn-row"><a class="btn btn-brand" href="appointment.html?chamber=popular#book">{icon('calendar')} Request serial</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Popular+Diagnostic+Centre+Dhanmondi+Dhaka" target="_blank" rel="noopener">{icon('pin')} Map</a></div></article>
 <article class="chamber">{local_photo('chamber-malibag.jpg', 1200, 675, 'Dr. Sirajul Islam MCH, Malibag', 'Dr. Sirajul Islam Medical College and Hospital building in Malibag, Dhaka', page, 'ph--sm')}<span class="status" data-chamber-status="malibag">Call to confirm hours</span><h3>Dr. Sirajul Islam Medical College &amp; Hospital, Malibag</h3>
-<dl><dt>Address</dt><dd>12/3 New Circular Road, Malibag (near Mouchak Market), Dhaka</dd><dt>Days</dt><dd>{v('Call to confirm', 'Published schedules differ: daily except Friday 8 to 10 PM, or Sat to Thu 6 to 8 PM.')}</dd><dt>Fee</dt><dd>{v('Ask when you call', 'Add the fee for this chamber.')}</dd></dl>
+<dl><dt>Address</dt><dd>12/3 New Circular Road, Malibag (near Mouchak Market), Dhaka</dd><dt>Days</dt><dd>{v('Call to confirm', 'Published schedules differ: daily except Friday 8 to 10 PM, or Sat to Thu 6 to 8 PM.')}</dd></dl>
 <div><span class="small muted">Appointment</span><br><a class="phone" href="tel:+8801927333000">{DOC['phone_malibag']}</a> · <a class="phone" href="tel:+8801830279952">{DOC['phone_malibag2']}</a></div>
 <div class="btn-row"><a class="btn btn-brand" href="appointment.html?chamber=malibag#book">{icon('calendar')} Request serial</a><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Dr.+Sirajul+Islam+Medical+College+Hospital+Malibag" target="_blank" rel="noopener">{icon('pin')} Map</a></div></article>
 </div>"""
@@ -837,37 +837,41 @@ def page_appointment():
  <p class="lead" style="margin-top:18px">Dr. Zico sees patients at three places in Dhaka. The quickest way to book is to call his personal assistant on <a href="tel:{DOC['pa_intl']}">{DOC['pa']}</a> or the chamber directly. You can also send a request below.</p>
 </div></section>
 <section class="section" id="chambers"><div class="wrap">{chamber_cards('Appointment')}</div></section>
-<section class="section section--tint" id="book"><div class="wrap split">
+<section class="section section--tint" id="book"><div class="wrap split" data-wa="{DOC['pa_intl'].lstrip('+')}">
  <div>
-  <form class="form" id="booking-form" novalidate>
-   <div><h2>Request an appointment</h2><p class="muted small" style="margin-top:6px">Fields marked <span class="req" style="color:var(--danger)">*</span> are required. This is a request: your serial is confirmed only when the chamber calls you.</p></div>
-   <div class="form-summary" id="b-summary" role="alert" hidden></div>
-   <fieldset><legend>Patient</legend>
-    <div class="field"><label for="b-name">Patient's full name <span class="req">*</span></label><input id="b-name" name="name" autocomplete="name" required><span class="err" id="b-name-err" hidden></span></div>
-    <div class="field"><label for="b-phone">Mobile number <span class="req">*</span></label><input id="b-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required><span class="help">The chamber will call this number.</span><span class="err" id="b-phone-err" hidden></span></div>
-    <div class="field"><label for="b-age">Age</label><input id="b-age" name="age" type="number" inputmode="numeric" min="0" max="110"><span class="err" id="b-age-err" hidden></span></div>
-   </fieldset>
-   <fieldset><legend>Visit</legend>
-    <div class="field"><label for="b-chamber">Chamber <span class="req">*</span></label><select id="b-chamber" name="chamber" required><option value="">Choose a chamber</option><option value="continental">Continental Hospital, Gulshan 2</option><option value="popular" selected>Popular Diagnostic Centre, Dhanmondi</option><option value="malibag">Dr. Sirajul Islam Medical College &amp; Hospital, Malibag</option></select><span class="err" id="b-chamber-err" hidden></span></div>
-    <div class="field"><label for="b-date">Preferred date <span class="req">*</span></label><input id="b-date" name="date" type="date" required><span class="help" id="b-date-hint"></span><div class="next-dates" id="b-next" aria-label="Next available dates"></div><span class="err" id="b-date-err" hidden></span></div>
-   </fieldset>
-   <fieldset><legend>Problem</legend>
-    <div class="field"><label for="b-concern">Main problem <span class="req">*</span></label><select id="b-concern" name="concern" required><option value="">Choose one</option>{opts}<option value="unsure">Not sure</option></select><span class="err" id="b-concern-err" hidden></span></div>
-    <div class="field"><label for="b-mri">Do you have an MRI or CT scan?</label><select id="b-mri" name="mri"><option>Yes, MRI</option><option>Yes, CT scan</option><option>Both</option><option>Not yet</option></select></div>
-    <div class="field field--full"><label for="b-notes">Short description (optional)</label><textarea id="b-notes" name="notes" maxlength="600" placeholder="For example: back pain spreading to the left leg for 2 months"></textarea></div>
-   </fieldset>
-   <label class="check"><input type="checkbox" id="b-consent" required><span>I understand this is a request, and the chamber will call to confirm the serial and fee. <span class="req">*</span></span></label><span class="err" id="b-consent-err" hidden style="color:var(--danger);font-size:var(--t-xs);font-weight:650"></span>
-   <div class="btn-row"><button class="btn btn-primary" type="submit">{icon('calendar')} Send request</button><a class="btn btn-ghost" href="tel:{DOC['pa_intl']}">{icon('phone')} Or call {DOC['pa']}</a></div>
+  <form class="bk" id="booking-form" novalidate>
+   <div class="bk-head"><h2>Request a serial on WhatsApp</h2>
+    <p class="muted">Takes less than a minute. Your details go to Dr. Zico's assistant on WhatsApp, who will reply with your serial and time.</p>
+    <p class="bk-bn small" lang="bn">ফর্মটি পূরণ করে পাঠালে ডাঃ জিকোর সহকারীর হোয়াটসঅ্যাপে চলে যাবে, তিনি সিরিয়াল জানিয়ে দেবেন।</p></div>
+   <div class="bk-step"><span class="bk-label" id="bk-ch-label"><b>1</b> Choose a chamber</span>
+    <div class="bk-chambers" role="radiogroup" aria-labelledby="bk-ch-label">
+     <label class="bk-ch"><input type="radio" name="chamber" value="continental"><span class="bk-ch-box"><strong>Continental Hospital</strong><span>Gulshan 2</span><span class="bk-when">Sat to Thu, 8:30 AM to 4 PM</span></span></label>
+     <label class="bk-ch"><input type="radio" name="chamber" value="popular" checked><span class="bk-ch-box"><strong>Popular Diagnostic</strong><span>Dhanmondi</span><span class="bk-when">Sat, Mon, Wed, 10 PM to 12 AM</span></span></label>
+     <label class="bk-ch"><input type="radio" name="chamber" value="malibag"><span class="bk-ch-box"><strong>Dr. Sirajul Islam MCH</strong><span>Malibag</span><span class="bk-when">Day and time confirmed on WhatsApp</span></span></label>
+    </div></div>
+   <div class="bk-step"><span class="bk-label" id="bk-day-label"><b>2</b> Preferred day <em>(optional)</em></span>
+    <div class="bk-days" id="bk-days" role="radiogroup" aria-labelledby="bk-day-label"></div></div>
+   <div class="bk-step"><span class="bk-label"><b>3</b> Patient details</span>
+    <div class="bk-grid">
+     <div class="bk-field"><label for="b-name">Patient's name</label><input id="b-name" name="name" autocomplete="name" placeholder="Full name" required><span class="bk-err" id="b-name-err" hidden></span></div>
+     <div class="bk-field"><label for="b-phone">Mobile number</label><input id="b-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required><span class="bk-err" id="b-phone-err" hidden></span></div>
+     <div class="bk-field"><label for="b-concern">Problem <em>(optional)</em></label><select id="b-concern" name="concern"><option value="">Choose if you know</option>{opts}<option value="unsure">Not sure</option></select></div>
+     <div class="bk-field"><label for="b-notes">Short note <em>(optional)</em></label><input id="b-notes" name="notes" maxlength="200" placeholder="e.g. back pain for 2 months, have MRI"></div>
+    </div></div>
+   <button class="bk-send" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg> Send on WhatsApp</button>
+   <p class="bk-alt small">Prefer to call? <a href="tel:{DOC['pa_intl']}">{DOC['pa']}</a> (personal assistant)</p>
   </form>
-  <div class="success" id="booking-success" tabindex="-1" hidden>
-   <h2>Request ready</h2><p>Thank you. To confirm your serial quickly, please also call <strong class="num" id="b-call-number">{DOC['phone_popular']}</strong> and mention these details.</p>
-   <dl></dl>
-   <div class="btn-row"><button class="btn btn-brand" type="button" id="b-copy">Copy details</button><button class="btn btn-ghost" type="button" id="b-again">New request</button></div>
-   <p class="xsmall muted">{v('Online requests are not yet connected to the chamber.', 'Connect this form to email, WhatsApp or a database when moving to Next.js.')}</p>
+  <div class="bk-done" id="booking-success" tabindex="-1" hidden>
+   <div class="bk-done-ic" aria-hidden="true">{icon('check')}</div>
+   <h2>WhatsApp is open</h2>
+   <p>Your message to Dr. Zico's assistant is ready. <strong>Press Send in WhatsApp</strong> to finish. The assistant will reply with your serial.</p>
+   <p class="small muted" lang="bn">হোয়াটসঅ্যাপে মেসেজ তৈরি আছে, শুধু Send চাপুন।</p>
+   <div class="btn-row"><a class="btn btn-primary" id="bk-reopen" href="#" target="_blank" rel="noopener">Open WhatsApp again</a><button class="btn btn-ghost" type="button" id="b-again">Edit details</button></div>
+   <p class="small muted">WhatsApp not installed? Call <a href="tel:{DOC['pa_intl']}">{DOC['pa']}</a>.</p>
   </div>
  </div>
  <aside class="stack">
-  <div class="box"><h3>{icon('file')} Bring with you</h3>{BRING}</div>
+  <div class="box"><h3 class="box-title">{icon('file')} Bring with you</h3>{BRING}</div>
   <div class="box"><h3>How the serial works</h3><ol class="steps-list small"><li>Call the chamber number, or send a request here.</li><li>The chamber gives you a serial number and time.</li><li>Arrive a little early with your films and reports.</li></ol></div>
   <div class="bn-box" lang="bn"><h3>সিরিয়াল নিতে</h3><p>ব্যক্তিগত সহকারী: {DOC['pa']}। কন্টিনেন্টাল হাসপাতাল (শনি থেকে বৃহস্পতি, সকাল ৮:৩০ থেকে বিকাল ৪টা): হটলাইন ১০৬৬৬। পপুলার ডায়াগনস্টিক সেন্টার, ধানমন্ডি: {DOC['phone_popular']} (শনি, সোম, বুধ, রাত ১০টা থেকে ১২টা)। সব MRI/CT রিপোর্ট সাথে আনুন।</p></div>
  </aside>
@@ -1020,6 +1024,47 @@ def page_images(html_text):
         if f not in [x for x, _ in out]: out.append((f, html.unescape(alt.group(1)) if alt else ""))
     return out
 
+HTACCESS = r"""# Dr. Zico website: rules for Hostinger (LiteSpeed / Apache). Generated by _build/build.py.
+Options -MultiViews -Indexes
+DirectoryIndex index.html
+RewriteEngine On
+
+# Old addresses with .html go to the clean address (301): /about.html -> /about, /index.html -> /
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# A trailing slash goes to the address without it (keeps image and CSS paths working): /about/ -> /about
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Clean address is served from the .html file: /about -> about.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# Hide build tools and notes from visitors
+RewriteRule ^(_build|fb-feed-worker)(/|$) - [F,L]
+RewriteRule ^[^/]+\.md$ - [F,L]
+
+# Browser cache: CSS/JS carry ?v= versions, so they can be cached for a year; images for a week
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 7 days"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml application/xml
+</IfModule>
+"""
+
 def main():
     make_og_image()
     pages = {"index.html": page_home(), "services.html": page_services(), "about.html": page_about(),
@@ -1036,17 +1081,26 @@ def main():
             with open(os.path.join(ROOT, a), "rb") as fh:
                 c = c.replace(f'"{a}"', f'"{a}?v={hashlib.md5(fh.read()).hexdigest()[:10]}"')
         return c
+    # Clean URLs: links, canonical, schema and sitemap use /about instead of /about.html.
+    # Netlify serves about.html for /about automatically; the .html files stay as they are.
+    names = [n[:-5] for n in pages if n != "index.html"]
+    def clean_urls(c):
+        for n in names:
+            c = re.sub(r'(href=")' + re.escape(n) + r'\.html(?=["?#])', r"\g<1>" + n, c)
+            c = c.replace(f"{SITE_URL}/{n}.html", f"{SITE_URL}/{n}")
+        c = re.sub(r'href="index\.html(?=["?#])', 'href="/', c)
+        return c.replace(f"{SITE_URL}/index.html", f"{SITE_URL}/")
     for n, c in pages.items():
         assert "\u2014" not in c, f"em dash in {n}"
-        pages[n] = c = versioned(c)
+        pages[n] = c = clean_urls(versioned(c))
         write(n, c)
     def url_entry(n, c):
         imgs = "".join(f"<image:image><image:loc>{SITE_URL}/assets/img/{f}</image:loc></image:image>" for f, _ in page_images(c)[:1000])
-        return f"<url><loc>{SITE_URL}/{'' if n == 'index.html' else n}</loc><lastmod>{LAST_REVIEWED}</lastmod>{imgs}</url>"
+        return f"<url><loc>{SITE_URL}/{'' if n == 'index.html' else n[:-5]}</loc><lastmod>{LAST_REVIEWED}</lastmod>{imgs}</url>"
     urls = "".join(url_entry(n, c) for n, c in pages.items())
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">{urls}</urlset>\n')
-    # Netlify cache rules: images and optimized copies are reused for a week, CSS/JS for a day
-    write("_headers", "/assets/img/*\n  Cache-Control: public, max-age=604800\n/assets/css/*\n  Cache-Control: public, max-age=86400\n/assets/js/*\n  Cache-Control: public, max-age=86400\n")
+    # Hostinger (LiteSpeed/Apache) rules: clean URLs, https, cache. See HTACCESS below.
+    write(".htaccess", HTACCESS)
     IMAGES.append(("All pages (social share)", "og-image.jpg", "1200x630", "Social share image", "Shown when the site is shared on Facebook/WhatsApp: portrait + name + Neurosurgeon"))
     rows = "\n".join(f"| {pg} | `assets/img/{f}` | {sz} | {lb} | {d} |" for pg, f, sz, lb, d in IMAGES)
     write("IMAGES.md", "# Image list\n\nSave each photo in `assets/img/` with exactly this file name. It replaces the placeholder automatically, no rebuild needed. Use JPG or WebP, compressed under about 300 KB.\n\nFolders: `assets/img/before-after/` holds the before/after scans, `assets/img/services/<service>/` holds every photo for that service page (one folder per service), `assets/img/operating-theatre/` the OT photos. Patient photos are grouped in `assets/img/happy-patient/`. Their order, source filenames, dimensions and alt text are in `_build/happy_patients.json`; they appear in the Home and Gallery patient carousels.\n\n| Page | File | Size (px) | What | What to shoot or make |\n|---|---|---|---|---|\n" + rows + f"\n\nTotal: {len(IMAGES)} images.\n")
