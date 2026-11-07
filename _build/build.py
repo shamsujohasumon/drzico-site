@@ -404,12 +404,10 @@ def ba_card(c, page):
     sp = "spine" if cat == "spine" else "brain"
     before = ph(f"{BA_DIR}/case-{cid}-before.jpg", 1200, 900, "Before: " + title, note + " (before)", "Before surgery: " + title, "Gallery", "ph--fill ph--sm")
     after = ph(f"{BA_DIR}/case-{cid}-after.jpg", 1200, 900, "After: " + title, note + " (after)", "After surgery: " + title, "Gallery", "ph--fill ph--sm")
-    # Before and after are shown whole, side by side (nothing is cut off). Tap opens both large.
     return f"""<article class="ba-card" data-cat="{cat}">
- <div class="ba2" data-ba-view data-title="{esc(title)}" data-note="{esc(note)}">
-  <div class="ba2-side"><span class="ba2-tag ba2-tag--b">Before</span>{before}</div>
-  <div class="ba2-side"><span class="ba2-tag ba2-tag--a">After</span>{after}</div>
-  <button class="ba2-zoom" type="button" aria-label="See before and after larger: {esc(title)}">{icon('search')} View larger</button></div>
+ <div class="ba" style="--pos:50%"><div class="ba-layer ba-after">{after}</div><div class="ba-layer ba-before">{before}</div>
+  <span class="ba-tag ba-tag--b">Before</span><span class="ba-tag ba-tag--a">After</span><span class="ba-handle" aria-hidden="true"></span>
+  <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Compare before and after: {esc(title)}"></div>
  <div class="ba-body"><span class="tag">{CAT_LABEL[cat]}</span><h3>{esc(title)}</h3><span class="bn small" lang="bn">{esc(bn)}</span>
  <p class="small muted">{v(esc(note), 'Dr. Zico to confirm the diagnosis and the result for this case before the site goes live.')}</p>
  <a class="small" href="{url}">About this treatment</a></div>
@@ -417,7 +415,7 @@ def ba_card(c, page):
 
 def ba_carousel(cases, page):
     cards = "".join(ba_card(c, page) for c in cases)
-    return f"""<div class="carousel" data-carousel data-autoplay="4500">
+    return f"""<div class="carousel carousel--ba" data-carousel data-autoplay="4500">
  <div class="car-track" tabindex="0" aria-label="Before and after cases, scroll sideways">{cards}</div>
  <div class="car-nav"><button class="icon-btn" type="button" data-car-prev aria-label="Previous case">{icon('arrow', 'flip')}</button><button class="icon-btn" type="button" data-car-next aria-label="Next case">{icon('arrow')}</button></div>
 </div>"""
@@ -662,7 +660,7 @@ def page_home():
 </div></section>
 
 <section class="section section--tint" id="before-after"><div class="wrap">
- <div class="section-head section-head--row"><div class="stack-sm"><span class="eyebrow">Before and after</span><h2>Results from real operations</h2><p class="muted">Scans and photos before and after surgery. Before is on the left, after on the right. Tap a case to see both larger. All images are shared with written consent, with names removed.</p></div>
+ <div class="section-head section-head--row"><div class="stack-sm"><span class="eyebrow">Before and after</span><h2>Results from real operations</h2><p class="muted">Scans and photos before and after surgery. Drag the handle to compare. All images are shared with written consent, with names removed.</p></div>
  <a class="btn btn-ghost" href="gallery.html">{icon('image')} Open patient gallery</a></div>
  {ba_carousel(CASES, 'Home')}
 </div></section>
@@ -904,7 +902,7 @@ def page_gallery():
     pics = operating_theatre_photos("Gallery", lightbox=True)
     body = f"""{crumbs([("Home", "index.html"), ("Patient gallery", "gallery.html")])}
 <section class="page-hero"><div class="wrap"><span class="eyebrow">Patient gallery</span><h1 style="margin-top:12px">Before and After: Patient Gallery<span class="bn-line" lang="bn">রোগীদের অপারেশনের আগে ও পরে</span></h1>
-<p class="lead" style="margin-top:18px">Scans and photos from Dr. Zico's operations, shared with patients' written consent and with names removed. Before is on the left, after on the right. Tap a case to see both larger.</p></div></section>
+<p class="lead" style="margin-top:18px">Scans and photos from Dr. Zico's operations, shared with patients' written consent and with names removed. Drag the handle on each image to compare before and after.</p></div></section>
 <section class="section" id="cases"><div class="wrap">
  <div class="filter-bar" role="group" aria-label="Filter cases">{chips}<span class="small muted" id="filter-count" aria-live="polite"></span></div>
  <div class="ba-grid" data-filter-scope>{cases}</div>
