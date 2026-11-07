@@ -9,25 +9,26 @@ Folders: `assets/img/before-after/` holds the before/after scans, `assets/img/se
 | Home | `assets/img/dr-zico-portrait.png` | 1212x1297 | Dr. Zico portrait (cut-out) | Dr. Md. Isma Azam (Zico), neurosurgeon in Dhaka, in a white coat |
 | Home | `assets/img/ot-team-microscope.jpg` | 1800x1350 | In the operating theatre | Dr. Zico and the surgical team with a microscope and surgical monitor in the operating theatre |
 | Home | `assets/img/team-photo.jpg` | 1536x2048 | Team photo | Dr. Zico with neurosurgery and anaesthesia consultants, specialists and OT nurses |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-01.webp` | 1203x1600 | Patient photo 01 | Dr. Zico seated with a woman patient and her family member at the clinic |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-02.webp` | 1290x1170 | Patient photo 02 | Dr. Zico with a patient wearing a white prayer cap at the consultation desk |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-03.webp` | 1253x1600 | Patient photo 03 | Dr. Zico standing beside an older patient in a white kurta at the clinic |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-04.webp` | 1441x1600 | Patient photo 04 | Dr. Zico with a patient wearing a green shirt at the clinic |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-05.webp` | 1566x1600 | Patient photo 05 | Dr. Zico speaking with an older woman patient seated in a wheelchair |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-06.webp` | 1378x1600 | Patient photo 06 | Patient and family group with Dr. Zico at the consultation room |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-07.webp` | 1600x1439 | Patient photo 07 | Dr. Zico beside a patient wearing a prayer cap and an embroidered shawl |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-08.webp` | 1200x1600 | Patient photo 08 | Dr. Zico with a patient and family member in the consultation room |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-09.webp` | 1200x1600 | Patient photo 09 | Dr. Zico standing with two women at the clinic |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-10.webp` | 1600x1200 | Patient photo 10 | Dr. Zico with a smiling patient, both wearing maroon shirts |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-11.webp` | 1600x1200 | Patient photo 11 | Dr. Zico at his desk with a patient and family during a consultation |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-12.webp` | 1200x1600 | Patient photo 12 | Dr. Zico with a woman patient and her family member at the clinic |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-13.webp` | 1284x1600 | Patient photo 13 | Dr. Zico standing between a patient and a family member in the consultation room |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-14.webp` | 769x838 | Patient photo 14 | Dr. Zico seated beside an older patient wearing a white prayer cap |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-15.webp` | 1600x1514 | Patient photo 15 | Dr. Zico at the consultation desk with a woman patient wearing a headscarf |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-16.webp` | 1600x1484 | Patient photo 16 | Dr. Zico seated with an older woman patient wearing a white headscarf |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-17.webp` | 1200x1600 | Patient photo 17 | Dr. Zico standing beside a woman patient seated in a wheelchair |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-18.webp` | 1200x1600 | Patient photo 18 | Dr. Zico standing with a patient and a family member at the clinic |
-| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-19.webp` | 1600x1016 | Patient photo 19 | Dr. Zico seated beside a young patient wearing a red shirt at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-20.webp` | 1024x1600 | Patient photo 01 | Dr. Zico with a smiling woman patient and the gifts she brought to his chamber |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-01.webp` | 1203x1600 | Patient photo 02 | Dr. Zico seated with a woman patient and her family member at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-02.webp` | 1290x1170 | Patient photo 03 | Dr. Zico with a patient wearing a white prayer cap at the consultation desk |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-03.webp` | 1253x1600 | Patient photo 04 | Dr. Zico standing beside an older patient in a white kurta at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-04.webp` | 1441x1600 | Patient photo 05 | Dr. Zico with a patient wearing a green shirt at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-05.webp` | 1566x1600 | Patient photo 06 | Dr. Zico speaking with an older woman patient seated in a wheelchair |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-06.webp` | 1378x1600 | Patient photo 07 | Patient and family group with Dr. Zico at the consultation room |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-07.webp` | 1600x1439 | Patient photo 08 | Dr. Zico beside a patient wearing a prayer cap and an embroidered shawl |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-08.webp` | 1200x1600 | Patient photo 09 | Dr. Zico with a patient and family member in the consultation room |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-09.webp` | 1200x1600 | Patient photo 10 | Dr. Zico standing with two women at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-10.webp` | 1600x1200 | Patient photo 11 | Dr. Zico with a smiling patient, both wearing maroon shirts |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-11.webp` | 1600x1200 | Patient photo 12 | Dr. Zico at his desk with a patient and family during a consultation |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-12.webp` | 1200x1600 | Patient photo 13 | Dr. Zico with a woman patient and her family member at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-13.webp` | 1284x1600 | Patient photo 14 | Dr. Zico standing between a patient and a family member in the consultation room |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-14.webp` | 769x838 | Patient photo 15 | Dr. Zico seated beside an older patient wearing a white prayer cap |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-15.webp` | 1600x1514 | Patient photo 16 | Dr. Zico at the consultation desk with a woman patient wearing a headscarf |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-16.webp` | 1600x1484 | Patient photo 17 | Dr. Zico seated with an older woman patient wearing a white headscarf |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-17.webp` | 1200x1600 | Patient photo 18 | Dr. Zico standing beside a woman patient seated in a wheelchair |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-18.webp` | 1200x1600 | Patient photo 19 | Dr. Zico standing with a patient and a family member at the clinic |
+| Home / Gallery | `assets/img/happy-patient/dr-zico-happy-patient-19.webp` | 1600x1016 | Patient photo 20 | Dr. Zico seated beside a young patient wearing a red shirt at the clinic |
 | Gallery | `assets/img/before-after/case-cpa-axial-before.jpg` | 1200x900 | Before: CP angle tumour (axial view) | Contrast MRI of the head before and after surgery. The large tumour at the cerebellopontine angle, beside the brainstem, is not seen after the operation. (before) |
 | Gallery | `assets/img/before-after/case-cpa-axial-after.jpg` | 1200x900 | After: CP angle tumour (axial view) | Contrast MRI of the head before and after surgery. The large tumour at the cerebellopontine angle, beside the brainstem, is not seen after the operation. (after) |
 | Gallery | `assets/img/before-after/case-cpa-hydro-before.jpg` | 1200x900 | Before: CP angle tumour with hydrocephalus | Front-view MRI before and after surgery. Before: a CP angle tumour with enlarged fluid spaces in the brain. After: the tumour is removed and the fluid spaces are smaller. (before) |
@@ -111,4 +112,4 @@ Folders: `assets/img/before-after/` holds the before/after scans, `assets/img/se
 | Trigeminal Neuralgia (MVD) | `assets/img/services/trigeminal-neuralgia-mvd/trigeminal-neuralgia-mvd-trigeminal-neuralgia.jpg` | 1200x900 | Illustration: Trigeminal neuralgia and microvascular decompression | Simple anatomical illustration of this condition (Canva). No real scans with patient names |
 | All pages (social share) | `assets/img/og-image.jpg` | 1200x630 | Social share image | Shown when the site is shared on Facebook/WhatsApp: portrait + name + Neurosurgeon |
 
-Total: 104 images.
+Total: 105 images.
