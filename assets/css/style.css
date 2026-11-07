@@ -930,3 +930,26 @@ html.anim .reveal.is-in { opacity: 1; transform: none; }
 .chamber, .case-card, .fb-card, .video-card, .box { transition: transform .25s cubic-bezier(.2, .7, .2, 1), box-shadow .25s, border-color .25s; }
 .chamber:hover, .case-card:hover, .fb-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 @media (prefers-reduced-motion: reduce) { .chamber:hover, .case-card:hover, .fb-card:hover { transform: none; } }
+/* v1.23: before / after shown whole, side by side */
+.ba2 { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: #0b1216; cursor: zoom-in; }
+.ba2-side { position: relative; aspect-ratio: 1 / 1; }
+.ba2-side .ph { position: absolute; inset: 0; height: 100%; aspect-ratio: auto !important; border: 0; border-radius: 0; background: #0b1216; }
+.ba2-side .ph > img { object-fit: contain; background: #0b1216; }
+.ba2-tag { position: absolute; z-index: 3; top: 8px; left: 8px; padding: 4px 9px; border-radius: 6px; font: 700 11px/1 var(--f-body); letter-spacing: .06em; text-transform: uppercase; color: #fff; }
+.ba2-tag--b { background: #B4442F; }
+.ba2-tag--a { background: #157A3F; }
+.ba2-zoom { position: absolute; z-index: 3; right: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .92); color: #10232c; font: 700 12px/1 var(--f-body); cursor: pointer; }
+.ba2-zoom svg { width: 14px; height: 14px; }
+.ba2:hover .ba2-zoom, .ba2-zoom:focus-visible { background: #fff; outline: 2px solid var(--brand); }
+.ba-viewer { border: 0; padding: 0; background: transparent; width: min(1200px, 96vw); max-width: none; max-height: 96vh; overflow: auto; }
+.ba-viewer::backdrop { background: rgba(6, 14, 18, .9); }
+.bav-box { position: relative; padding: 52px 4px 8px; color: #fff; }
+.bav-close { position: absolute; top: 0; right: 0; background: rgba(255, 255, 255, .14); color: #fff; border-color: rgba(255, 255, 255, .3); font-size: 18px; }
+.bav-title { color: #fff; font-size: clamp(1.1rem, 2.4vw, 1.5rem); margin: 0 0 12px; }
+.bav-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .bav-pair { grid-template-columns: 1fr; } }
+.bav-pair figure { margin: 0; background: #000; border-radius: 10px; overflow: hidden; }
+.bav-pair figcaption { padding: 8px 12px; font: 700 13px/1 var(--f-body); letter-spacing: .06em; text-transform: uppercase; }
+.bav-b { background: #B4442F; } .bav-a { background: #157A3F; }
+.bav-pair img { display: block; width: 100%; height: auto; max-height: 72vh; object-fit: contain; }
+.bav-note { margin: 12px 2px 0; color: #d7e3ea; font-size: var(--t-sm); }

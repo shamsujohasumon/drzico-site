@@ -281,6 +281,32 @@
     if (r) r.addEventListener("input", function () { ba.style.setProperty("--pos", r.value + "%"); });
   });
 
+  /* ---------- before / after: open both images large, side by side ---------- */
+  var baCards = $$("[data-ba-view]");
+  if (baCards.length) {
+    var bv = document.createElement("dialog");
+    bv.className = "ba-viewer"; bv.setAttribute("aria-label", "Before and after");
+    bv.innerHTML = '<div class="bav-box"><button class="icon-btn bav-close" type="button" aria-label="Close">&#x2715;</button>' +
+      '<h2 class="bav-title"></h2><div class="bav-pair"><figure><figcaption class="bav-b">Before surgery</figcaption><img alt=""></figure>' +
+      '<figure><figcaption class="bav-a">After surgery</figcaption><img alt=""></figure></div><p class="bav-note"></p></div>';
+    document.body.appendChild(bv);
+    var bimgs = $$("img", bv);
+    var closeBv = function () { if (bv.open) bv.close(); };
+    $(".bav-close", bv).addEventListener("click", closeBv);
+    bv.addEventListener("click", function (e) { if (e.target === bv) closeBv(); });
+    baCards.forEach(function (card) {
+      var open = function () {
+        var src = $$("img", card);
+        if (src.length < 2 || typeof bv.showModal !== "function") return;
+        src.forEach(function (im, i) { bimgs[i].src = im.dataset.full || im.currentSrc || im.src; bimgs[i].alt = im.alt; });
+        $(".bav-title", bv).textContent = card.getAttribute("data-title");
+        $(".bav-note", bv).textContent = card.getAttribute("data-note");
+        bv.showModal();
+      };
+      card.addEventListener("click", open);
+    });
+  }
+
   /* ---------- carousel ---------- */
   $$("[data-carousel]").forEach(function (c) {
     var track = $(".car-track", c);

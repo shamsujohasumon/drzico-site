@@ -378,8 +378,15 @@ GENERAL_FAQ = [
 ]
 
 # ------------------------------------------------------------------ before / after cases
+# NEWEST FIRST: add a new case as the first line of this list so it shows first on Home and Gallery.
 # Each case: (id, category, title, bangla title, service page, note). Images: assets/img/before-after/case-<id>-before.jpg / -after.jpg
 CASES = [
+    ("cpa-axial", "brain", "CP angle tumour (axial view)", "সিপি অ্যাঙ্গেল টিউমার", "brain-tumor-surgery.html#cp-angle", "Contrast MRI of the head before and after surgery. The large tumour at the cerebellopontine angle, beside the brainstem, is not seen after the operation."),
+    ("cpa-hydro", "brain", "CP angle tumour with hydrocephalus", "সিপি অ্যাঙ্গেল টিউমার ও মাথায় পানি জমা", "brain-tumor-surgery.html#cp-angle", "Front-view MRI before and after surgery. Before: a CP angle tumour with enlarged fluid spaces in the brain. After: the tumour is removed and the fluid spaces are smaller."),
+    ("suprasellar", "brain", "Large sellar and suprasellar tumour", "পিটুইটারি এলাকার বড় টিউমার", "brain-tumor-surgery.html#pituitary", "A large tumour in and above the pituitary area. MRI before surgery and CT scan after surgery."),
+    ("pituitary-sag", "brain", "Pituitary macroadenoma (side view)", "পিটুইটারি ম্যাক্রোঅ্যাডেনোমা", "brain-tumor-surgery.html#pituitary", "Pituitary MRI (side view) before and after surgery. The tumour is not seen after the operation."),
+    ("pituitary-cor", "brain", "Pituitary macroadenoma (front view)", "পিটুইটারি ম্যাক্রোঅ্যাডেনোমা", "brain-tumor-surgery.html#pituitary", "Pituitary MRI (front view) before and after surgery. The tumour between the two main arteries of the brain is not seen after the operation."),
+    ("spine-fracture", "spine", "Spine fracture fixation", "মেরুদণ্ডের হাড় ভাঙার অপারেশন", "spine-surgery.html#spine-trauma", "Fracture where the upper and lower back meet. CT scan before surgery, and X-ray after the spine was fixed with screws and rods."),
     ("pituitary", "brain", "Pituitary tumour", "পিটুইটারি টিউমার", "brain-tumor-surgery.html#pituitary", "Head MRI before and after surgery. The tumour at the base of the brain is not seen after the operation."),
     ("cervical-tumor", "spine", "Cervical spine tumour", "ঘাড়ের মেরুদণ্ডের টিউমার", "spinal-tumor-surgery.html#spinal-cord-tumors", "Neck MRI before and after surgery. A large tumour before the operation and a much smaller one after."),
     ("bypass", "brain", "Brain bypass surgery", "ব্রেইন বাইপাস সার্জারি", "brain-aneurysm-stroke-surgery.html#bypass", "Brain blood-vessel scan before and after bypass surgery."),
@@ -389,12 +396,6 @@ CASES = [
     ("deep-tumor", "brain", "Deep brain tumour", "মস্তিষ্কের গভীরের টিউমার", "brain-tumor-surgery.html", "Brain MRI before and after surgery. The deep tumour seen before is not seen after."),
     ("cpa", "brain", "Cerebellopontine angle tumour", "সিপি অ্যাঙ্গেল টিউমার", "brain-tumor-surgery.html#cp-angle", "Brain MRI before and after surgery for a tumour at the back of the brain, near the brainstem."),
     ("skullbase", "brain", "Skull base tumour", "খুলির তলদেশের টিউমার", "brain-tumor-surgery.html#skull-base", "MRI before and after surgery for a tumour at the base of the skull."),
-    ("cpa-axial", "brain", "CP angle tumour (axial view)", "সিপি অ্যাঙ্গেল টিউমার", "brain-tumor-surgery.html#cp-angle", "Contrast MRI of the head before and after surgery. The large tumour at the cerebellopontine angle, beside the brainstem, is not seen after the operation."),
-    ("cpa-hydro", "brain", "CP angle tumour with hydrocephalus", "সিপি অ্যাঙ্গেল টিউমার ও মাথায় পানি জমা", "brain-tumor-surgery.html#cp-angle", "Front-view MRI before and after surgery. Before: a CP angle tumour with enlarged fluid spaces in the brain. After: the tumour is removed and the fluid spaces are smaller."),
-    ("suprasellar", "brain", "Large sellar and suprasellar tumour", "পিটুইটারি এলাকার বড় টিউমার", "brain-tumor-surgery.html#pituitary", "A large tumour in and above the pituitary area. MRI before surgery and CT scan after surgery."),
-    ("pituitary-sag", "brain", "Pituitary macroadenoma (side view)", "পিটুইটারি ম্যাক্রোঅ্যাডেনোমা", "brain-tumor-surgery.html#pituitary", "Pituitary MRI (side view) before and after surgery. The tumour is not seen after the operation."),
-    ("pituitary-cor", "brain", "Pituitary macroadenoma (front view)", "পিটুইটারি ম্যাক্রোঅ্যাডেনোমা", "brain-tumor-surgery.html#pituitary", "Pituitary MRI (front view) before and after surgery. The tumour between the two main arteries of the brain is not seen after the operation."),
-    ("spine-fracture", "spine", "Spine fracture fixation", "মেরুদণ্ডের হাড় ভাঙার অপারেশন", "spine-surgery.html#spine-trauma", "Fracture where the upper and lower back meet. CT scan before surgery, and X-ray after the spine was fixed with screws and rods."),
 ]
 CAT_LABEL = {"spine": "Spine", "brain": "Brain", "children": "Children"}
 
@@ -403,10 +404,12 @@ def ba_card(c, page):
     sp = "spine" if cat == "spine" else "brain"
     before = ph(f"{BA_DIR}/case-{cid}-before.jpg", 1200, 900, "Before: " + title, note + " (before)", "Before surgery: " + title, "Gallery", "ph--fill ph--sm")
     after = ph(f"{BA_DIR}/case-{cid}-after.jpg", 1200, 900, "After: " + title, note + " (after)", "After surgery: " + title, "Gallery", "ph--fill ph--sm")
+    # Before and after are shown whole, side by side (nothing is cut off). Tap opens both large.
     return f"""<article class="ba-card" data-cat="{cat}">
- <div class="ba" style="--pos:50%"><div class="ba-layer ba-after">{after}</div><div class="ba-layer ba-before">{before}</div>
-  <span class="ba-tag ba-tag--b">Before</span><span class="ba-tag ba-tag--a">After</span><span class="ba-handle" aria-hidden="true"></span>
-  <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Compare before and after: {esc(title)}"></div>
+ <div class="ba2" data-ba-view data-title="{esc(title)}" data-note="{esc(note)}">
+  <div class="ba2-side"><span class="ba2-tag ba2-tag--b">Before</span>{before}</div>
+  <div class="ba2-side"><span class="ba2-tag ba2-tag--a">After</span>{after}</div>
+  <button class="ba2-zoom" type="button" aria-label="See before and after larger: {esc(title)}">{icon('search')} View larger</button></div>
  <div class="ba-body"><span class="tag">{CAT_LABEL[cat]}</span><h3>{esc(title)}</h3><span class="bn small" lang="bn">{esc(bn)}</span>
  <p class="small muted">{v(esc(note), 'Dr. Zico to confirm the diagnosis and the result for this case before the site goes live.')}</p>
  <a class="small" href="{url}">About this treatment</a></div>
@@ -659,7 +662,7 @@ def page_home():
 </div></section>
 
 <section class="section section--tint" id="before-after"><div class="wrap">
- <div class="section-head section-head--row"><div class="stack-sm"><span class="eyebrow">Before and after</span><h2>Results from real operations</h2><p class="muted">Scans and photos before and after surgery. Drag the handle to compare. All images are shared with written consent, with names removed.</p></div>
+ <div class="section-head section-head--row"><div class="stack-sm"><span class="eyebrow">Before and after</span><h2>Results from real operations</h2><p class="muted">Scans and photos before and after surgery. Before is on the left, after on the right. Tap a case to see both larger. All images are shared with written consent, with names removed.</p></div>
  <a class="btn btn-ghost" href="gallery.html">{icon('image')} Open patient gallery</a></div>
  {ba_carousel(CASES, 'Home')}
 </div></section>
@@ -901,7 +904,7 @@ def page_gallery():
     pics = operating_theatre_photos("Gallery", lightbox=True)
     body = f"""{crumbs([("Home", "index.html"), ("Patient gallery", "gallery.html")])}
 <section class="page-hero"><div class="wrap"><span class="eyebrow">Patient gallery</span><h1 style="margin-top:12px">Before and After: Patient Gallery<span class="bn-line" lang="bn">রোগীদের অপারেশনের আগে ও পরে</span></h1>
-<p class="lead" style="margin-top:18px">Scans and photos from Dr. Zico's operations, shared with patients' written consent and with names removed. Drag the handle on each image to compare before and after.</p></div></section>
+<p class="lead" style="margin-top:18px">Scans and photos from Dr. Zico's operations, shared with patients' written consent and with names removed. Before is on the left, after on the right. Tap a case to see both larger.</p></div></section>
 <section class="section" id="cases"><div class="wrap">
  <div class="filter-bar" role="group" aria-label="Filter cases">{chips}<span class="small muted" id="filter-count" aria-live="polite"></span></div>
  <div class="ba-grid" data-filter-scope>{cases}</div>
