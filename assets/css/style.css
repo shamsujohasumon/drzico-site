@@ -942,3 +942,14 @@ html.anim .reveal.is-in { opacity: 1; transform: none; }
 .ba-body h3 { font-size: 1.05rem; line-height: 1.3; }
 .ba-body p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 2px 0 0; }
 .ba-body > a { margin-top: auto; padding-top: 6px; }
+/* v1.25: on phones, before and after sit side by side, both whole (no slider to drag) */
+@media (max-width: 600px) {
+  .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; aspect-ratio: auto; background: #0b1216; }
+  .ba-layer { position: relative; inset: auto; aspect-ratio: 4 / 5; }
+  .ba-layer .ph > img { object-fit: cover; }
+  .ba-before { order: -1; clip-path: none; }
+  .ba-handle, .ba-range { display: none; }
+  .ba-tag { bottom: 8px; font-size: 10.5px; padding: 5px 8px; }
+  .ba-tag--b { left: 8px; } .ba-tag--a { right: 8px; }
+  .carousel--ba .car-track { grid-auto-columns: 94%; }
+}
