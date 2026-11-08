@@ -546,7 +546,9 @@
     ".contact-hospital", ".ot-photo-frame", ".faq details", ".notice", ".cta-band",
     "main .carousel", ".ledger:not(.ledger--float)", ".breakdown", ".timeline li"
   ].join(",");
-  if (!reduce && "IntersectionObserver" in window) {
+  // phones and small tablets: no scroll reveal, content is simply there (feels faster while scrolling)
+  var small = window.matchMedia("(max-width: 900px)").matches;
+  if (!reduce && !small && "IntersectionObserver" in window) {
     var items = $$(revealSel).filter(function (el) { return !el.closest(".hero, .page-hero, .site-header, dialog, .drawer, .car-track"); });
     document.documentElement.classList.add("anim");
     items.forEach(function (el) {

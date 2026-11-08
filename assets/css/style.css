@@ -953,3 +953,5 @@ html.anim .reveal.is-in { opacity: 1; transform: none; }
   .ba-tag--b { left: 8px; } .ba-tag--a { right: 8px; }
   .carousel--ba .car-track { grid-auto-columns: 94%; }
 }
+/* v1.26: phones: no hover lift either, keep scrolling light */
+@media (max-width: 900px) { .chamber:hover, .case-card:hover, .fb-card:hover, .svc-card:hover { transform: none; } }
